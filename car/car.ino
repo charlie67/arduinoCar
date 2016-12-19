@@ -1,16 +1,15 @@
-{
-#define FRONT_L_TRIG
-#define FRONT_L_ECHO
+#define FRONT_L_TRIG 32
+#define FRONT_L_ECHO 33
 #define FRONT_M_TRIG 24
 #define FRONT_M_ECHO 23
-#define FRONT_R_TRIG
-#define FRONT_R_ECHO
-#define BACK_L_TRIG
-#define BACK_L_ECHO
+#define FRONT_R_TRIG 30
+#define FRONT_R_ECHO 31
+#define BACK_L_TRIG 26
+#define BACK_L_ECHO 27
 #define BACK_M_TRIG 23
 #define BACK_M_ECHO 22
-#define BACK_R_TRIG
-#define BACK_R_ECHO
+#define BACK_R_TRIG 28
+#define BACK_R_ECHO 29
 #define FRONT_A_PWN 11
 #define FRONT_IN_1 48
 #define FRONT_IN_2 49
@@ -23,22 +22,22 @@
 #define BACK_B_PWN 12
 #define BACK_IN_3 50
 #define BACK_IN_4 51
-}
+
 void setup() {
   //PWM pins dont need pinMode to be called
   Serial.begin(9600);
-  //  pinMode(FRONT_L_TRIG, OUTPUT);
-  //  pinMode(FRONT_L_ECHO, INPUT);
+  pinMode(FRONT_L_TRIG, OUTPUT);
+  pinMode(FRONT_L_ECHO, INPUT);
   pinMode(FRONT_M_TRIG, OUTPUT);
   pinMode(FRONT_M_ECHO, INPUT);
-  //  pinMode(FRONT_R_TRIG, OUTPUT);
-  //  pinMode(FRONT_R_ECHO, INPUT);
-  //  pinMode(BACK_L_TRIG, OUTPUT);
-  //  pinMode(BACK_L_ECHO, INPUT);
+  pinMode(FRONT_R_TRIG, OUTPUT);
+  pinMode(FRONT_R_ECHO, INPUT);
+  pinMode(BACK_L_TRIG, OUTPUT);
+  pinMode(BACK_L_ECHO, INPUT);
   pinMode(BACK_M_TRIG, OUTPUT);
   pinMode(BACK_M_ECHO, INPUT);
-  //  pinMode(BACK_R_TRIG, OUTPUT);
-  //  pinMode(BACK_R_ECHO, INPUT);
+  pinMode(BACK_R_TRIG, OUTPUT);
+  pinMode(BACK_R_ECHO, INPUT);
   pinMode(BACK_IN_1, OUTPUT);
   pinMode(BACK_IN_2, OUTPUT);
   pinMode(BACK_IN_3, OUTPUT);
@@ -51,14 +50,13 @@ void setup() {
 
 void loop() {
   forward(1000, 255);
-  delay(1000);
 }
-void decide{
+void decide(){
   //TODO implement this to decide which direction should be moved
   //store previous directions in an array of 3? so its not boring
 }
 
-void stopAll(){
+void stopAll() {
   digitalWrite(BACK_IN_1, LOW);
   digitalWrite(BACK_IN_2, LOW);
   digitalWrite(BACK_IN_3, LOW);
@@ -76,16 +74,20 @@ void forward(int time, int speed) {
   forwardForFrontRight(speed);
   delay(time);
   digitalWrite(BACK_IN_1, LOW);
+  digitalWrite(BACK_IN_2, LOW);
   digitalWrite(BACK_IN_3, LOW);
+  digitalWrite(BACK_IN_4, LOW);
   digitalWrite(FRONT_IN_1, LOW);
+  digitalWrite(FRONT_IN_2, LOW);
   digitalWrite(FRONT_IN_3, LOW);
+  digitalWrite(FRONT_IN_4, LOW);
 }
 
 void forwardForBackLeft(int speed) {
   //enA and 1/2
   analogWrite(BACK_A_PWN, speed);
-  digitalWrite(BACK_IN_1, HIGH);
-  digitalWrite(BACK_IN_2, LOW);
+  digitalWrite(BACK_IN_1, LOW);
+  digitalWrite(BACK_IN_2, HIGH);
 }
 
 void forwardForBackRight(int speed) {
@@ -105,8 +107,8 @@ void forwardForFrontLeft(int speed) {
 void forwardForFrontRight(int speed) {
   //enB and 3/4
   analogWrite(FRONT_B_PWN, speed);
-  digitalWrite(FRONT_IN_3, HIGH);
-  digitalWrite(FRONT_IN_4, LOW);
+  digitalWrite(FRONT_IN_3, LOW);
+  digitalWrite(FRONT_IN_4, HIGH);
 }
 
 int checkDistance(int trig, int echo) {//these are the pins you retard
