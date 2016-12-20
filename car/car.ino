@@ -24,7 +24,6 @@
 #define BACK_IN_4 51
 
 void setup() {
-  //PWM pins dont need pinMode to be called
   Serial.begin(9600);
   pinMode(FRONT_L_TRIG, OUTPUT);
   pinMode(FRONT_L_ECHO, INPUT);
@@ -49,7 +48,7 @@ void setup() {
 }
 
 void loop() {
-  forward(1000, 255);
+  forward(255);
 }
 void decide(){
   //TODO implement this to decide which direction should be moved
@@ -67,20 +66,11 @@ void stopAll() {
   digitalWrite(FRONT_IN_4, LOW);
 }
 
-void forward(int time, int speed) {
+void forward(int speed) {
   forwardForBackLeft(speed);
   forwardForBackRight(speed);
   forwardForFrontLeft(speed);
   forwardForFrontRight(speed);
-  delay(time);
-  digitalWrite(BACK_IN_1, LOW);
-  digitalWrite(BACK_IN_2, LOW);
-  digitalWrite(BACK_IN_3, LOW);
-  digitalWrite(BACK_IN_4, LOW);
-  digitalWrite(FRONT_IN_1, LOW);
-  digitalWrite(FRONT_IN_2, LOW);
-  digitalWrite(FRONT_IN_3, LOW);
-  digitalWrite(FRONT_IN_4, LOW);
 }
 
 void forwardForBackLeft(int speed) {
