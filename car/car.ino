@@ -60,15 +60,23 @@ void loop() {
 }
 
 bool carryOn(String dir) {
-  //only need to check the direction the car is moving 
+  //only need to check the direction the car is moving
   if (dir == "forward") {
     if (checkFwd() < 20) {
+      return false;
+    } else if (checkFwdLeft() < 20) {
+      return false;
+    } else if (checkFwdRight() < 20) {
       return false;
     } else {
       return true;
     }
   } else if (dir == "back") {
-    if (checkBack < 20) {
+    if (checkBack() < 20) {
+      return false;
+    } else if (checkBackLeft() < 20) {
+      return false;
+    } else if (checkBackRight() < 20) {
       return false;
     } else {
       return true;
