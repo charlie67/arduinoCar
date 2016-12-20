@@ -48,19 +48,31 @@ void setup() {
 }
 
 void loop() {
-  forward(255);
-  if(carryOn() == false){
-    stopAll();
-    Serial.println("detected obstacle in front or back");
-    delay(2000);
+  String dir = decide();
+  while (carryOn(dir)) {
+    if (dir == "forward") {
+      forward(255);
+    } else if (dir == "back") {
+      backward(255);
+    }
   }
+  stopAll();
 }
 
-bool carryOn(){
-  if (checkFwd() < 20 || checkBack() < 20){
-    return false;
-  } else {
-    return true;
+bool carryOn(String dir) {
+  //only need to check the direction the car is moving 
+  if (dir == "forward") {
+    if (checkFwd() < 20) {
+      return false;
+    } else {
+      return true;
+    }
+  } else if (dir == "back") {
+    if (checkBack < 20) {
+      return false;
+    } else {
+      return true;
+    }
   }
 }
 
