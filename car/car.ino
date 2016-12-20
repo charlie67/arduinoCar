@@ -1,7 +1,7 @@
 #define FRONT_L_TRIG 32
 #define FRONT_L_ECHO 33
-#define FRONT_M_TRIG 24
-#define FRONT_M_ECHO 23
+#define FRONT_M_TRIG 34
+#define FRONT_M_ECHO 35
 #define FRONT_R_TRIG 30
 #define FRONT_R_ECHO 31
 #define BACK_L_TRIG 26
@@ -49,10 +49,31 @@ void setup() {
 
 void loop() {
   forward(255);
+  if(carryOn() == false){
+    stopAll();
+    Serial.println("detected obstacle in front or back");
+    delay(2000);
+  }
 }
-void decide() {
-  //TODO implement this to decide which direction should be moved
-  //store previous directions in an array of 3? so its not boring
+
+bool carryOn(){
+  if (checkFwd() < 20 || checkBack() < 20){
+    return false;
+  } else {
+    return true;
+  }
+}
+
+String decide() {
+  int forward = checkFwd();
+  int back = checkBack();
+  if (forward > back) {
+    return "forward";
+  } else if (back > forward) {
+    return "back";
+  } else {
+    return "forward";
+  }
 }
 
 void stopAll() {
@@ -146,28 +167,28 @@ void forwardForFrontRight(int speed) {
   digitalWrite(FRONT_IN_4, HIGH);
 }
 
-void checkFwdLeft() {
-  checkDistance(FRONT_L_TRIG, FRONT_L_ECHO);
+int checkFwdLeft() {
+  return checkDistance(FRONT_L_TRIG, FRONT_L_ECHO);
 }
 
-void checkFwdRight() {
-  checkDistance(FRONT_R_TRIG, FRONT_R_ECHO);
+int checkFwdRight() {
+  return checkDistance(FRONT_R_TRIG, FRONT_R_ECHO);
 }
 
-void checkFwd() {
-  checkDistance(FRONT_M_TRIG, FRONT_M_ECHO);
+int checkFwd() {
+  return checkDistance(FRONT_M_TRIG, FRONT_M_ECHO);
 }
 
-void checkBack() {
-  checkDistance(BACK_M_TRIG, BACK_M_ECHO);
+int checkBack() {
+  return checkDistance(BACK_M_TRIG, BACK_M_ECHO);
 }
 
-void checkBackLeft() {
-  checkDistance(BACK_L_TRIG, BACK_L_ECHO);
+int checkBackLeft() {
+  return checkDistance(BACK_L_TRIG, BACK_L_ECHO);
 }
 
-void checkBackRight() {
-  checkDistance(BACK_R_TRIG, BACK_R_ECHO);
+int checkBackRight() {
+  return checkDistance(BACK_R_TRIG, BACK_R_ECHO);
 }
 
 
