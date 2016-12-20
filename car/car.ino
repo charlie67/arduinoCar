@@ -50,7 +50,7 @@ void setup() {
 void loop() {
   forward(255);
 }
-void decide(){
+void decide() {
   //TODO implement this to decide which direction should be moved
   //store previous directions in an array of 3? so its not boring
 }
@@ -64,6 +64,51 @@ void stopAll() {
   digitalWrite(FRONT_IN_2, LOW);
   digitalWrite(FRONT_IN_3, LOW);
   digitalWrite(FRONT_IN_4, LOW);
+}
+
+void forwardLeft(int speed) {
+  forwardForBackLeft(speed);
+  forwardForFrontLeft(speed);
+}
+
+void forwardRight(int speed) {
+  forwardForBackRight(speed);
+  forwardForFrontRight(speed);
+}
+
+void backward(int speed) {
+  backwardForBackLeft(speed);
+  backwardForBackRight(speed);
+  backwardForFrontLeft(speed);
+  backwardForFrontRight(speed);
+}
+
+void backwardForBackLeft(int speed) {
+  //enA and 1/2
+  analogWrite(BACK_A_PWN, speed);
+  digitalWrite(BACK_IN_2, LOW);
+  digitalWrite(BACK_IN_1, HIGH);
+}
+
+void backwardForBackRight(int speed) {
+  //enB and 3/4
+  analogWrite(BACK_B_PWN, speed);
+  digitalWrite(BACK_IN_4, HIGH);
+  digitalWrite(BACK_IN_3, LOW);
+}
+
+void backwardForFrontLeft(int speed) {
+  //enB and 3/4
+  analogWrite(FRONT_A_PWN, speed);
+  digitalWrite(FRONT_IN_2, HIGH);
+  digitalWrite(FRONT_IN_1, LOW);
+}
+
+void backwardForFrontRight(int speed) {
+  //enB and 3/4
+  analogWrite(FRONT_B_PWN, speed);
+  digitalWrite(FRONT_IN_4, LOW);
+  digitalWrite(FRONT_IN_3, HIGH);
 }
 
 void forward(int speed) {
@@ -100,6 +145,32 @@ void forwardForFrontRight(int speed) {
   digitalWrite(FRONT_IN_3, LOW);
   digitalWrite(FRONT_IN_4, HIGH);
 }
+
+void checkFwdLeft() {
+  checkDistance(FRONT_L_TRIG, FRONT_L_ECHO);
+}
+
+void checkFwdRight() {
+  checkDistance(FRONT_R_TRIG, FRONT_R_ECHO);
+}
+
+void checkFwd() {
+  checkDistance(FRONT_M_TRIG, FRONT_M_ECHO);
+}
+
+void checkBack() {
+  checkDistance(BACK_M_TRIG, BACK_M_ECHO);
+}
+
+void checkBackLeft() {
+  checkDistance(BACK_L_TRIG, BACK_L_ECHO);
+}
+
+void checkBackRight() {
+  checkDistance(BACK_R_TRIG, BACK_R_ECHO);
+}
+
+
 
 int checkDistance(int trig, int echo) {//these are the pins you retard
   //ALWAYS HAVE A DELAY BEFORE CALLING THIS REPEATEDLY
