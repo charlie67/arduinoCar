@@ -17,11 +17,11 @@
 #define FRONT_IN_3 46
 #define FRONT_IN_4 47
 #define BACK_A_PWN  13
-#define BACK_IN_1 52
-#define BACK_IN_2 53
+#define BACK_IN_1 43
+#define BACK_IN_2 41
 #define BACK_B_PWN 12
-#define BACK_IN_3 50
-#define BACK_IN_4 51
+#define BACK_IN_3 45
+#define BACK_IN_4 44
 
 void setup() {
   Serial.begin(9600);
