@@ -1,4 +1,4 @@
 # arduinoCar
 
-require SDFat libary 
+requires SDFat libary 
 https://github.com/greiman/SdFat
