@@ -131,11 +131,21 @@ String decide() {
       as do backleft and frontRight
       so we can start by checking those
     */
+    //turning left
     int frontLeft = checkFwdLeft();
     int backRight = checkBackRight();
+    int left = (frontLeft + backRight)/2;
 
-    
+    //turning right
+    int frontRight = checkFwdRight();
+    int backLeft = checkBackLeft();
+    int right = (frontRight + backLeft)/2;
 
+    if (left > right){
+      //TODO implement the actual turning stuff something like
+      //left(int degree) but have degree in 5 degree increments maybe?
+      //so if degree is 18 would turn 90 degrees
+    }
   }
   if (forward > back) {
     return "forward";
