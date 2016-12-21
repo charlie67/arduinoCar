@@ -1,3 +1,9 @@
+#include "SdFat.h"
+#include <SPI.h>
+
+SdFat sd;
+SdFile output;
+
 #define FRONT_L_TRIG 32
 #define FRONT_L_ECHO 33
 #define FRONT_M_TRIG 34
@@ -25,6 +31,11 @@
 
 void setup() {
   Serial.begin(9600);
+
+  if (!sd.begin(53, SPI_HALF_SPEED)) {
+    sd.initErrorHalt();
+  }
+
   pinMode(FRONT_L_TRIG, OUTPUT);
   pinMode(FRONT_L_ECHO, INPUT);
   pinMode(FRONT_M_TRIG, OUTPUT);
@@ -48,7 +59,12 @@ void setup() {
 }
 
 void loop() {
+  if (!output.open("log.txt", O_RDWR | O_CREAT | O_AT_END)) {
+    sd.errorHalt("opening log.txt for write failed");
+  }
+
   String dir = decide();
+  output.println(millis() + ": " + dir + "is direction");
   while (carryOn(dir)) {
     if (dir == "forward") {
       forward(255);
@@ -57,28 +73,61 @@ void loop() {
     }
   }
   stopAll();
+  output.close();
 }
 
 bool carryOn(String dir) {
+  output.println("tre");
   //only need to check the direction the car is moving
   if (dir == "forward") {
+    
     if (checkFwd() < 20) {
+      output.print(millis() + ": ");
+      output.print("checkFwd() detected object at " + checkFwd());
+      output.print('\n');
       return false;
-    } else if (checkFwdLeft() < 20) {
+    } 
+    
+    else if (checkFwdLeft() < 20) {
+      output.print(millis() + ": ");
+      output.print("checkFwdLeft() detected object at " + checkFwdLeft());
+      output.print('\n');
       return false;
-    } else if (checkFwdRight() < 20) {
+    } 
+    
+    else if (checkFwdRight() < 20) {
+      output.print(millis() + ": ");
+      output.print("checkFwdRight() detected object at " + checkFwdRight());
+      output.print('\n');
       return false;
-    } else {
+    } 
+    
+    else {
       return true;
     }
   } else if (dir == "back") {
     if (checkBack() < 20) {
+      output.print(millis() + ": ");
+      output.print("checkBack() detected object at " + checkBack());
+      output.print('\n');
       return false;
-    } else if (checkBackLeft() < 20) {
+    } 
+    
+    else if (checkBackLeft() < 20) {
+      output.print(millis() + ": ");
+      output.print("checkBackLeft() detected object at " + checkBackLeft());
+      output.print('\n');
       return false;
-    } else if (checkBackRight() < 20) {
+    }
+    
+    else if (checkBackRight() < 20) {
+      output.print(millis() + ": ");
+      output.print("checkBackRight() detected object at " + checkBackRight());
+      output.print('\n');
       return false;
-    } else {
+    } 
+    
+    else {
       return true;
     }
   }
@@ -97,6 +146,7 @@ String decide() {
 }
 
 void stopAll() {
+  output.println("everything stopping");
   digitalWrite(BACK_IN_1, LOW);
   digitalWrite(BACK_IN_2, LOW);
   digitalWrite(BACK_IN_3, LOW);
