@@ -36,6 +36,17 @@ void setup() {
     sd.initErrorHalt();
   }
 
+  //make it clear that a new run is taking place
+  for (int i = 0; i < 6; i ++){
+    output.println(" ");
+  }
+  
+  output.println("START OF NEW RUN");
+  
+  for (int i = 0; i < 6; i ++){
+    output.println(" ");
+  }
+  
   pinMode(FRONT_L_TRIG, OUTPUT);
   pinMode(FRONT_L_ECHO, INPUT);
   pinMode(FRONT_M_TRIG, OUTPUT);
@@ -56,6 +67,7 @@ void setup() {
   pinMode(FRONT_IN_2, OUTPUT);
   pinMode(FRONT_IN_3, OUTPUT);
   pinMode(FRONT_IN_4, OUTPUT);
+  output.close();
 }
 
 void loop() {
@@ -64,7 +76,7 @@ void loop() {
   }
 
   String dir = decide();
-  output.println(dir + " is direction");
+//  output.println(dir + " is direction");
   while (carryOn(dir)) {
     if (dir == "forward") {
       forward(255);
@@ -81,17 +93,17 @@ bool carryOn(String dir) {
   if (dir == "forward") {
 
     if (checkFwd() < 20) {
-      output.print("checkFwd() detected object at " + checkFwd());
+//      output.println("checkFwd() detected object at " + checkFwd());
       return false;
     }
 
     else if (checkFwdLeft() < 20) {
-      output.print("checkFwdLeft() detected object at " + checkFwdLeft());
+//      output.println("checkFwdLeft() detected object at " + checkFwdLeft());
       return false;
     }
 
     else if (checkFwdRight() < 20) {
-      output.print("checkFwdRight() detected object at " + checkFwdRight());
+//      output.println("checkFwdRight() detected object at " + checkFwdRight());
       return false;
     }
 
@@ -100,17 +112,17 @@ bool carryOn(String dir) {
     }
   } else if (dir == "back") {
     if (checkBack() < 20) {
-      output.print("checkBack() detected object at " + checkBack());
+//      output.println("checkBack() detected object at " + checkBack());
       return false;
     }
 
     else if (checkBackLeft() < 20) {
-      output.println("checkBackLeft() detected object at " + checkBackLeft());
+//      output.println("checkBackLeft() detected object at " + checkBackLeft());
       return false;
     }
 
     else if (checkBackRight() < 20) {
-      output.println("checkBackRight() detected object at " + checkBackRight());
+//      output.println("checkBackRight() detected object at " + checkBackRight());
       return false;
     }
 
@@ -123,30 +135,30 @@ bool carryOn(String dir) {
 String decide() {
   int forward = checkFwd();
   int back = checkBack();
-  if (forward < 50 && back < 50) {
-    /*will have to turn
-      decide which direction
-
-      frontLeft and backright go together
-      as do backleft and frontRight
-      so we can start by checking those
-    */
-    //turning left
-    int frontLeft = checkFwdLeft();
-    int backRight = checkBackRight();
-    int left = (frontLeft + backRight)/2;
-
-    //turning right
-    int frontRight = checkFwdRight();
-    int backLeft = checkBackLeft();
-    int right = (frontRight + backLeft)/2;
-
-    if (left > right){
-      //TODO implement the actual turning stuff something like
-      //left(int degree) but have degree in 5 degree increments maybe?
-      //so if degree is 18 would turn 90 degrees
-    }
-  }
+//  if (forward < 50 && back < 50) {
+//    /*will have to turn
+//      decide which direction
+//
+//      frontLeft and backright go together
+//      as do backleft and frontRight
+//      so we can start by checking those
+//    */
+//    //turning left
+//    int frontLeft = checkFwdLeft();
+//    int backRight = checkBackRight();
+//    int left = (frontLeft + backRight)/2;
+//
+//    //turning right
+//    int frontRight = checkFwdRight();
+//    int backLeft = checkBackLeft();
+//    int right = (frontRight + backLeft)/2;
+//
+//    if (left > right){
+//      //TODO implement the actual turning stuff something like
+//      //left(int degree) but have degree in 5 degree increments maybe?
+//      //so if degree is 18 would turn 90 degrees
+//    }
+//  }
   if (forward > back) {
     return "forward";
   } else if (back > forward) {
