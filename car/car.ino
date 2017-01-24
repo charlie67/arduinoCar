@@ -1,9 +1,3 @@
-#include "SdFat.h"
-#include <SPI.h>
-
-SdFat sd;
-SdFile output;
-
 #define FRONT_L_TRIG 32
 #define FRONT_L_ECHO 33
 #define FRONT_M_TRIG 34
@@ -31,10 +25,6 @@ SdFile output;
 
 void setup() {
   Serial.begin(9600);
-
-  if (!sd.begin(53, SPI_HALF_SPEED)) {
-    sd.initErrorHalt();
-  }
 
   //make it clear that a new run is taking place
   for (int i = 0; i < 6; i ++){
@@ -71,10 +61,6 @@ void setup() {
 }
 
 void loop() {
-  if (!output.open("log.txt", O_RDWR | O_CREAT | O_AT_END)) {
-    sd.errorHalt("opening log.txt for write failed");
-  }
-
   String dir = decide();
 //  output.println(dir + " is direction");
   while (carryOn(dir)) {
@@ -85,8 +71,8 @@ void loop() {
     }
   }
   stopAll();
-  output.close();
 }
+
 
 bool carryOn(String dir) {
   //only need to check the direction the car is moving
