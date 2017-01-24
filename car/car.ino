@@ -1,3 +1,6 @@
+#include <SoftwareSerial.h>
+SoftwareSerial BT(52, 53);
+
 #define FRONT_L_TRIG 32
 #define FRONT_L_ECHO 33
 #define FRONT_M_TRIG 34
@@ -24,17 +27,16 @@
 #define BACK_IN_4 44
 
 void setup() {
-  Serial.begin(9600);
 
   //make it clear that a new run is taking place
   for (int i = 0; i < 6; i ++){
-    Serial.println(" ");
+    BT.println(" ");
   }
   
-  Serial.println("START OF NEW RUN");
+  BT.println("START OF NEW RUN");
   
   for (int i = 0; i < 6; i ++){
-    Serial.println(" ");
+    BT.println(" ");
   }
   
   pinMode(FRONT_L_TRIG, OUTPUT);
@@ -77,17 +79,17 @@ bool carryOn(String dir) {
   if (dir == "forward") {
 
     if (checkFwd() < 20) {
-      Serial.println("checkFwd() detected object at " + checkFwd());
+      BT.println("checkFwd() detected object at " + checkFwd());
       return false;
     }
 
     else if (checkFwdLeft() < 20) {
-      Serial.println("checkFwdLeft() detected object at " + checkFwdLeft());
+      BT.println("checkFwdLeft() detected object at " + checkFwdLeft());
       return false;
     }
 
     else if (checkFwdRight() < 20) {
-      Serial.println("checkFwdRight() detected object at " + checkFwdRight());
+      BT.println("checkFwdRight() detected object at " + checkFwdRight());
       return false;
     }
 
@@ -96,17 +98,17 @@ bool carryOn(String dir) {
     }
   } else if (dir == "back") {
     if (checkBack() < 20) {
-      Serial.println("checkBack() detected object at " + checkBack());
+      BT.println("checkBack() detected object at " + checkBack());
       return false;
     }
 
     else if (checkBackLeft() < 20) {
-      Serial.println("checkBackLeft() detected object at " + checkBackLeft());
+      BT.println("checkBackLeft() detected object at " + checkBackLeft());
       return false;
     }
 
     else if (checkBackRight() < 20) {
-      Serial.println("checkBackRight() detected object at " + checkBackRight());
+      BT.println("checkBackRight() detected object at " + checkBackRight());
       return false;
     }
 
