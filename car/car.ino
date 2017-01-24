@@ -28,13 +28,13 @@ void setup() {
 
   //make it clear that a new run is taking place
   for (int i = 0; i < 6; i ++){
-    output.println(" ");
+    Serial.println(" ");
   }
   
-  output.println("START OF NEW RUN");
+  Serial.println("START OF NEW RUN");
   
   for (int i = 0; i < 6; i ++){
-    output.println(" ");
+    Serial.println(" ");
   }
   
   pinMode(FRONT_L_TRIG, OUTPUT);
@@ -57,12 +57,10 @@ void setup() {
   pinMode(FRONT_IN_2, OUTPUT);
   pinMode(FRONT_IN_3, OUTPUT);
   pinMode(FRONT_IN_4, OUTPUT);
-  output.close();
 }
 
 void loop() {
   String dir = decide();
-//  output.println(dir + " is direction");
   while (carryOn(dir)) {
     if (dir == "forward") {
       forward(255);
@@ -79,17 +77,17 @@ bool carryOn(String dir) {
   if (dir == "forward") {
 
     if (checkFwd() < 20) {
-//      output.println("checkFwd() detected object at " + checkFwd());
+      Serial.println("checkFwd() detected object at " + checkFwd());
       return false;
     }
 
     else if (checkFwdLeft() < 20) {
-//      output.println("checkFwdLeft() detected object at " + checkFwdLeft());
+      Serial.println("checkFwdLeft() detected object at " + checkFwdLeft());
       return false;
     }
 
     else if (checkFwdRight() < 20) {
-//      output.println("checkFwdRight() detected object at " + checkFwdRight());
+      Serial.println("checkFwdRight() detected object at " + checkFwdRight());
       return false;
     }
 
@@ -98,17 +96,17 @@ bool carryOn(String dir) {
     }
   } else if (dir == "back") {
     if (checkBack() < 20) {
-//      output.println("checkBack() detected object at " + checkBack());
+      Serial.println("checkBack() detected object at " + checkBack());
       return false;
     }
 
     else if (checkBackLeft() < 20) {
-//      output.println("checkBackLeft() detected object at " + checkBackLeft());
+      Serial.println("checkBackLeft() detected object at " + checkBackLeft());
       return false;
     }
 
     else if (checkBackRight() < 20) {
-//      output.println("checkBackRight() detected object at " + checkBackRight());
+      Serial.println("checkBackRight() detected object at " + checkBackRight());
       return false;
     }
 
