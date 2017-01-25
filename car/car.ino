@@ -62,6 +62,11 @@ void setup() {
 }
 
 void loop() {
+  standardRun();
+//  forwardLeft(255);
+}
+
+void standardRun(){
   String dir = decide();
   while (carryOn(dir)) {
     if (dir == "forward") {
