@@ -62,8 +62,8 @@ void setup() {
 }
 
 void loop() {
-  standardRun();
-//  forwardLeft(255);
+//  standardRun();
+  forwardLeft(255);
 }
 
 void standardRun(){
