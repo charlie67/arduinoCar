@@ -29,16 +29,16 @@ SoftwareSerial BT(52, 53);
 void setup() {
 
   //make it clear that a new run is taking place
-  for (int i = 0; i < 6; i ++){
+  for (int i = 0; i < 6; i ++) {
     BT.println(" ");
   }
-  
+
   BT.println("START OF NEW RUN");
-  
-  for (int i = 0; i < 6; i ++){
+
+  for (int i = 0; i < 6; i ++) {
     BT.println(" ");
   }
-  
+
   pinMode(FRONT_L_TRIG, OUTPUT);
   pinMode(FRONT_L_ECHO, INPUT);
   pinMode(FRONT_M_TRIG, OUTPUT);
@@ -59,14 +59,19 @@ void setup() {
   pinMode(FRONT_IN_2, OUTPUT);
   pinMode(FRONT_IN_3, OUTPUT);
   pinMode(FRONT_IN_4, OUTPUT);
+
+  turnLeft(255);
+  delay(675);
+  stopAll();
 }
 
 void loop() {
-//  standardRun();
-  forwardLeft(255);
+//  turnLeft(255);
+//  delay(100);
+//  stopAll();
 }
 
-void standardRun(){
+void standardRun() {
   String dir = decide();
   while (carryOn(dir)) {
     if (dir == "forward") {
@@ -77,7 +82,6 @@ void standardRun(){
   }
   stopAll();
 }
-
 
 bool carryOn(String dir) {
   //only need to check the direction the car is moving
@@ -126,30 +130,30 @@ bool carryOn(String dir) {
 String decide() {
   int forward = checkFwd();
   int back = checkBack();
-//  if (forward < 50 && back < 50) {
-//    /*will have to turn
-//      decide which direction
-//
-//      frontLeft and backright go together
-//      as do backleft and frontRight
-//      so we can start by checking those
-//    */
-//    //turning left
-//    int frontLeft = checkFwdLeft();
-//    int backRight = checkBackRight();
-//    int left = (frontLeft + backRight)/2;
-//
-//    //turning right
-//    int frontRight = checkFwdRight();
-//    int backLeft = checkBackLeft();
-//    int right = (frontRight + backLeft)/2;
-//
-//    if (left > right){
-//      //TODO implement the actual turning stuff something like
-//      //left(int degree) but have degree in 5 degree increments maybe?
-//      //so if degree is 18 would turn 90 degrees
-//    }
-//  }
+  //  if (forward < 50 && back < 50) {
+  //    /*will have to turn
+  //      decide which direction
+  //
+  //      frontLeft and backright go together
+  //      as do backleft and frontRight
+  //      so we can start by checking those
+  //    */
+  //    //turning left
+  //    int frontLeft = checkFwdLeft();
+  //    int backRight = checkBackRight();
+  //    int left = (frontLeft + backRight)/2;
+  //
+  //    //turning right
+  //    int frontRight = checkFwdRight();
+  //    int backLeft = checkBackLeft();
+  //    int right = (frontRight + backLeft)/2;
+  //
+  //    if (left > right){
+  //      //TODO implement the actual turning stuff something like
+  //      //left(int degree) but have degree in 5 degree increments maybe?
+  //      //so if degree is 18 would turn 90 degrees
+  //    }
+  //  }
   if (forward > back) {
     return "forward";
   } else if (back > forward) {
@@ -170,12 +174,32 @@ void stopAll() {
   digitalWrite(FRONT_IN_4, LOW);
 }
 
-void forwardLeft(int speed) {
+void turnLeft(int speed) {
+  forwardLeft(255);
+  backwardRight(255);
+}
+
+void turnRight(int speed) {
+  forwardRight(speed);
+  backwardLeft(speed);
+}
+
+void backwardRight(int speed) { //moves the right side backwards
+  backwardForFrontRight(speed);
+  backwardForBackRight(speed);
+}
+
+void backwardLeft(int speed) { //moves left side backwards
+  backwardForBackLeft(speed);
+  backwardForBackRight(speed);
+}
+
+void forwardLeft(int speed) {//moves left forwards
   forwardForBackLeft(speed);
   forwardForFrontLeft(speed);
 }
 
-void forwardRight(int speed) {
+void forwardRight(int speed) {//moves right forwards
   forwardForBackRight(speed);
   forwardForFrontRight(speed);
 }
