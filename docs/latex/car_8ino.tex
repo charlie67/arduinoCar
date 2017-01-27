@@ -1,0 +1,447 @@
+\hypertarget{car_8ino}{}\section{E\+:/development/\+Github/arduino\+Car/car/car.ino File Reference}
+\label{car_8ino}\index{E\+:/development/\+Github/arduino\+Car/car/car.\+ino@{E\+:/development/\+Github/arduino\+Car/car/car.\+ino}}
+{\ttfamily \#include \char`\"{}Software\+Serial.\+h\char`\"{}}\newline
+\subsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \hyperlink{car_8ino_a338e185f573d6757f7924bc5b599466b}{F\+R\+O\+N\+T\+\_\+\+L\+\_\+\+T\+R\+IG}~32
+\item 
+\#define \hyperlink{car_8ino_a88d5c939e1bd2fdd56ff64aefa21359e}{F\+R\+O\+N\+T\+\_\+\+L\+\_\+\+E\+C\+HO}~33
+\item 
+\#define \hyperlink{car_8ino_a964db28e3b1061f3f048c2798cb62765}{F\+R\+O\+N\+T\+\_\+\+M\+\_\+\+T\+R\+IG}~34
+\item 
+\#define \hyperlink{car_8ino_a27970d12cc04360f3b07ca8fcfb7a2b9}{F\+R\+O\+N\+T\+\_\+\+M\+\_\+\+E\+C\+HO}~35
+\item 
+\#define \hyperlink{car_8ino_acbbe325ef617580d92b0e4e7fde4c56d}{F\+R\+O\+N\+T\+\_\+\+R\+\_\+\+T\+R\+IG}~30
+\item 
+\#define \hyperlink{car_8ino_a9b392165325fed7e3198fcfdd753747a}{F\+R\+O\+N\+T\+\_\+\+R\+\_\+\+E\+C\+HO}~31
+\item 
+\#define \hyperlink{car_8ino_a8d641702e3e9f91eb4c7828b7e87fe5a}{B\+A\+C\+K\+\_\+\+L\+\_\+\+T\+R\+IG}~26
+\item 
+\#define \hyperlink{car_8ino_ae702c7c201f7502d232dca39b5de9fcf}{B\+A\+C\+K\+\_\+\+L\+\_\+\+E\+C\+HO}~27
+\item 
+\#define \hyperlink{car_8ino_a283a085a4ca45da5313fb015386f1ae5}{B\+A\+C\+K\+\_\+\+M\+\_\+\+T\+R\+IG}~23
+\item 
+\#define \hyperlink{car_8ino_a5f6c39f0c693daba75edd3967f8f4453}{B\+A\+C\+K\+\_\+\+M\+\_\+\+E\+C\+HO}~22
+\item 
+\#define \hyperlink{car_8ino_a7c460aada4d1c1ddbcf9c366f2236ebb}{B\+A\+C\+K\+\_\+\+R\+\_\+\+T\+R\+IG}~28
+\item 
+\#define \hyperlink{car_8ino_a5d8f4fd2fefb0c3f623ae5c61e71574a}{B\+A\+C\+K\+\_\+\+R\+\_\+\+E\+C\+HO}~29
+\item 
+\#define \hyperlink{car_8ino_ab326384eb90dc7dd1958ce8b09952513}{F\+R\+O\+N\+T\+\_\+\+A\+\_\+\+P\+WN}~11
+\item 
+\#define \hyperlink{car_8ino_abedc250958d71e2eb009a81184c703de}{F\+R\+O\+N\+T\+\_\+\+I\+N\+\_\+1}~48
+\item 
+\#define \hyperlink{car_8ino_a9468ef02de181ac8503508ff005cfa40}{F\+R\+O\+N\+T\+\_\+\+I\+N\+\_\+2}~49
+\item 
+\#define \hyperlink{car_8ino_aae839574086fcabaf850f470644bc7a8}{F\+R\+O\+N\+T\+\_\+\+B\+\_\+\+P\+WN}~10
+\item 
+\#define \hyperlink{car_8ino_a4754d2774432266bf9f066638c6e06d7}{F\+R\+O\+N\+T\+\_\+\+I\+N\+\_\+3}~46
+\item 
+\#define \hyperlink{car_8ino_a9c739ab0e8d980f8855e69230bc919ca}{F\+R\+O\+N\+T\+\_\+\+I\+N\+\_\+4}~47
+\item 
+\#define \hyperlink{car_8ino_afdb8a33d60147799dac8fbb339510734}{B\+A\+C\+K\+\_\+\+A\+\_\+\+P\+WN}~13
+\item 
+\#define \hyperlink{car_8ino_a36df21899746bfb8fe0f710bb6bf6276}{B\+A\+C\+K\+\_\+\+I\+N\+\_\+1}~43
+\item 
+\#define \hyperlink{car_8ino_a7a3ad88d54749e56e743a85f810b3e12}{B\+A\+C\+K\+\_\+\+I\+N\+\_\+2}~41
+\item 
+\#define \hyperlink{car_8ino_a367d04e137f931b359091a61cdbb3c29}{B\+A\+C\+K\+\_\+\+B\+\_\+\+P\+WN}~12
+\item 
+\#define \hyperlink{car_8ino_a180305dc44cf0ddb3b20f5ec4c6c281d}{B\+A\+C\+K\+\_\+\+I\+N\+\_\+3}~45
+\item 
+\#define \hyperlink{car_8ino_a7f821dd617bfed158351387c803a2b55}{B\+A\+C\+K\+\_\+\+I\+N\+\_\+4}~44
+\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+Software\+Serial \hyperlink{car_8ino_a2cca1c020108fcb2373c68a07273a43b}{BT} (52, 53)
+\item 
+void \hyperlink{car_8ino_a4fc01d736fe50cf5b977f755b675f11d}{setup} ()
+\item 
+void \hyperlink{car_8ino_afe461d27b9c48d5921c00d521181f12f}{loop} ()
+\item 
+void \hyperlink{car_8ino_af597af78b8192bd4439e8d1d570e95a1}{standard\+Run} ()
+\item 
+bool \hyperlink{car_8ino_ad46b410153632e6620adf44c21873de5}{carry\+On} (String dir)
+\item 
+String \hyperlink{car_8ino_ab056fd4ab103d47f70a5ab4a469d1c08}{decide} ()
+\item 
+void \hyperlink{car_8ino_a4823aa91e33925c0da5969f5011c07da}{stop\+All} ()
+\item 
+void \hyperlink{car_8ino_adcc2352cf3d5cf7317b119265c8deb03}{turn\+Left} (int speed)
+\item 
+void \hyperlink{car_8ino_af9cc2a3cfa7536ca9039202968bc40b5}{turn\+Right} (int speed)
+\item 
+void \hyperlink{car_8ino_a4a2b1571265ea8470805dfb28713bc0f}{backward\+Right} (int speed)
+\item 
+void \hyperlink{car_8ino_a3b887a1e60a824c3e9e9c7e41f0245cf}{backward\+Left} (int speed)
+\item 
+void \hyperlink{car_8ino_a6bea6c9230620fc358ac2fe3cdc495ee}{forward\+Left} (int speed)
+\item 
+void \hyperlink{car_8ino_aff9a5f1aef152d83f0f6aec7ff3a9c79}{forward\+Right} (int speed)
+\item 
+void \hyperlink{car_8ino_a2915381729924a9acc25236cadf9391d}{backward} (int speed)
+\item 
+void \hyperlink{car_8ino_aefcffdc351fa6a2c75de903b76d7cde5}{backward\+For\+Back\+Left} (int speed)
+\item 
+void \hyperlink{car_8ino_a132295235efc0d707c2e34134af320d4}{backward\+For\+Back\+Right} (int speed)
+\item 
+void \hyperlink{car_8ino_af1ff7cc133f26792314dc587d391a2e9}{backward\+For\+Front\+Left} (int speed)
+\item 
+void \hyperlink{car_8ino_a9303a11d73ff753cab62587a431ad893}{backward\+For\+Front\+Right} (int speed)
+\item 
+void \hyperlink{car_8ino_a1ad7d08045323c724751d2db3c0349d6}{forward} (int speed)
+\item 
+void \hyperlink{car_8ino_a114907bb25a227c7815fdf0f7fe9e7a2}{forward\+For\+Back\+Left} (int speed)
+\item 
+void \hyperlink{car_8ino_ac5a4a877a2ec86535ec734dfe82e1e26}{forward\+For\+Back\+Right} (int speed)
+\item 
+void \hyperlink{car_8ino_a43a8c2c3049fc50d921a6f6b5fe5cda7}{forward\+For\+Front\+Left} (int speed)
+\item 
+void \hyperlink{car_8ino_a350b91f1aa7e8d8d431d1243f5de8ce2}{forward\+For\+Front\+Right} (int speed)
+\item 
+int \hyperlink{car_8ino_a68a65fca2a14cfa8a8c98f11e6f75d98}{check\+Fwd\+Left} ()
+\item 
+int \hyperlink{car_8ino_a18eac13eef94645c75ea3e5b2464d197}{check\+Fwd\+Right} ()
+\item 
+int \hyperlink{car_8ino_ad38f4b26a5e3293787a6d4c7bd4d1e6f}{check\+Fwd} ()
+\item 
+int \hyperlink{car_8ino_a67c46e128339bcaf0c044d085cf708ce}{check\+Back} ()
+\item 
+int \hyperlink{car_8ino_a171443d8ec5e6f6ba918a182a909ffcf}{check\+Back\+Left} ()
+\item 
+int \hyperlink{car_8ino_ab0f5a07df3f52892a9140ec6b8d1622f}{check\+Back\+Right} ()
+\item 
+int \hyperlink{car_8ino_a74e32c456d4ea8fb25c0087eb4b01b00}{check\+Distance} (int trig, int echo)
+\end{DoxyCompactItemize}
+
+
+\subsection{Macro Definition Documentation}
+\mbox{\Hypertarget{car_8ino_afdb8a33d60147799dac8fbb339510734}\label{car_8ino_afdb8a33d60147799dac8fbb339510734}} 
+\index{car.\+ino@{car.\+ino}!B\+A\+C\+K\+\_\+\+A\+\_\+\+P\+WN@{B\+A\+C\+K\+\_\+\+A\+\_\+\+P\+WN}}
+\index{B\+A\+C\+K\+\_\+\+A\+\_\+\+P\+WN@{B\+A\+C\+K\+\_\+\+A\+\_\+\+P\+WN}!car.\+ino@{car.\+ino}}
+\subsubsection{\texorpdfstring{B\+A\+C\+K\+\_\+\+A\+\_\+\+P\+WN}{BACK\_A\_PWN}}
+{\footnotesize\ttfamily \#define B\+A\+C\+K\+\_\+\+A\+\_\+\+P\+WN~13}
+
+\mbox{\Hypertarget{car_8ino_a367d04e137f931b359091a61cdbb3c29}\label{car_8ino_a367d04e137f931b359091a61cdbb3c29}} 
+\index{car.\+ino@{car.\+ino}!B\+A\+C\+K\+\_\+\+B\+\_\+\+P\+WN@{B\+A\+C\+K\+\_\+\+B\+\_\+\+P\+WN}}
+\index{B\+A\+C\+K\+\_\+\+B\+\_\+\+P\+WN@{B\+A\+C\+K\+\_\+\+B\+\_\+\+P\+WN}!car.\+ino@{car.\+ino}}
+\subsubsection{\texorpdfstring{B\+A\+C\+K\+\_\+\+B\+\_\+\+P\+WN}{BACK\_B\_PWN}}
+{\footnotesize\ttfamily \#define B\+A\+C\+K\+\_\+\+B\+\_\+\+P\+WN~12}
+
+\mbox{\Hypertarget{car_8ino_a36df21899746bfb8fe0f710bb6bf6276}\label{car_8ino_a36df21899746bfb8fe0f710bb6bf6276}} 
+\index{car.\+ino@{car.\+ino}!B\+A\+C\+K\+\_\+\+I\+N\+\_\+1@{B\+A\+C\+K\+\_\+\+I\+N\+\_\+1}}
+\index{B\+A\+C\+K\+\_\+\+I\+N\+\_\+1@{B\+A\+C\+K\+\_\+\+I\+N\+\_\+1}!car.\+ino@{car.\+ino}}
+\subsubsection{\texorpdfstring{B\+A\+C\+K\+\_\+\+I\+N\+\_\+1}{BACK\_IN\_1}}
+{\footnotesize\ttfamily \#define B\+A\+C\+K\+\_\+\+I\+N\+\_\+1~43}
+
+\mbox{\Hypertarget{car_8ino_a7a3ad88d54749e56e743a85f810b3e12}\label{car_8ino_a7a3ad88d54749e56e743a85f810b3e12}} 
+\index{car.\+ino@{car.\+ino}!B\+A\+C\+K\+\_\+\+I\+N\+\_\+2@{B\+A\+C\+K\+\_\+\+I\+N\+\_\+2}}
+\index{B\+A\+C\+K\+\_\+\+I\+N\+\_\+2@{B\+A\+C\+K\+\_\+\+I\+N\+\_\+2}!car.\+ino@{car.\+ino}}
+\subsubsection{\texorpdfstring{B\+A\+C\+K\+\_\+\+I\+N\+\_\+2}{BACK\_IN\_2}}
+{\footnotesize\ttfamily \#define B\+A\+C\+K\+\_\+\+I\+N\+\_\+2~41}
+
+\mbox{\Hypertarget{car_8ino_a180305dc44cf0ddb3b20f5ec4c6c281d}\label{car_8ino_a180305dc44cf0ddb3b20f5ec4c6c281d}} 
+\index{car.\+ino@{car.\+ino}!B\+A\+C\+K\+\_\+\+I\+N\+\_\+3@{B\+A\+C\+K\+\_\+\+I\+N\+\_\+3}}
+\index{B\+A\+C\+K\+\_\+\+I\+N\+\_\+3@{B\+A\+C\+K\+\_\+\+I\+N\+\_\+3}!car.\+ino@{car.\+ino}}
+\subsubsection{\texorpdfstring{B\+A\+C\+K\+\_\+\+I\+N\+\_\+3}{BACK\_IN\_3}}
+{\footnotesize\ttfamily \#define B\+A\+C\+K\+\_\+\+I\+N\+\_\+3~45}
+
+\mbox{\Hypertarget{car_8ino_a7f821dd617bfed158351387c803a2b55}\label{car_8ino_a7f821dd617bfed158351387c803a2b55}} 
+\index{car.\+ino@{car.\+ino}!B\+A\+C\+K\+\_\+\+I\+N\+\_\+4@{B\+A\+C\+K\+\_\+\+I\+N\+\_\+4}}
+\index{B\+A\+C\+K\+\_\+\+I\+N\+\_\+4@{B\+A\+C\+K\+\_\+\+I\+N\+\_\+4}!car.\+ino@{car.\+ino}}
+\subsubsection{\texorpdfstring{B\+A\+C\+K\+\_\+\+I\+N\+\_\+4}{BACK\_IN\_4}}
+{\footnotesize\ttfamily \#define B\+A\+C\+K\+\_\+\+I\+N\+\_\+4~44}
+
+\mbox{\Hypertarget{car_8ino_ae702c7c201f7502d232dca39b5de9fcf}\label{car_8ino_ae702c7c201f7502d232dca39b5de9fcf}} 
+\index{car.\+ino@{car.\+ino}!B\+A\+C\+K\+\_\+\+L\+\_\+\+E\+C\+HO@{B\+A\+C\+K\+\_\+\+L\+\_\+\+E\+C\+HO}}
+\index{B\+A\+C\+K\+\_\+\+L\+\_\+\+E\+C\+HO@{B\+A\+C\+K\+\_\+\+L\+\_\+\+E\+C\+HO}!car.\+ino@{car.\+ino}}
+\subsubsection{\texorpdfstring{B\+A\+C\+K\+\_\+\+L\+\_\+\+E\+C\+HO}{BACK\_L\_ECHO}}
+{\footnotesize\ttfamily \#define B\+A\+C\+K\+\_\+\+L\+\_\+\+E\+C\+HO~27}
+
+\mbox{\Hypertarget{car_8ino_a8d641702e3e9f91eb4c7828b7e87fe5a}\label{car_8ino_a8d641702e3e9f91eb4c7828b7e87fe5a}} 
+\index{car.\+ino@{car.\+ino}!B\+A\+C\+K\+\_\+\+L\+\_\+\+T\+R\+IG@{B\+A\+C\+K\+\_\+\+L\+\_\+\+T\+R\+IG}}
+\index{B\+A\+C\+K\+\_\+\+L\+\_\+\+T\+R\+IG@{B\+A\+C\+K\+\_\+\+L\+\_\+\+T\+R\+IG}!car.\+ino@{car.\+ino}}
+\subsubsection{\texorpdfstring{B\+A\+C\+K\+\_\+\+L\+\_\+\+T\+R\+IG}{BACK\_L\_TRIG}}
+{\footnotesize\ttfamily \#define B\+A\+C\+K\+\_\+\+L\+\_\+\+T\+R\+IG~26}
+
+\mbox{\Hypertarget{car_8ino_a5f6c39f0c693daba75edd3967f8f4453}\label{car_8ino_a5f6c39f0c693daba75edd3967f8f4453}} 
+\index{car.\+ino@{car.\+ino}!B\+A\+C\+K\+\_\+\+M\+\_\+\+E\+C\+HO@{B\+A\+C\+K\+\_\+\+M\+\_\+\+E\+C\+HO}}
+\index{B\+A\+C\+K\+\_\+\+M\+\_\+\+E\+C\+HO@{B\+A\+C\+K\+\_\+\+M\+\_\+\+E\+C\+HO}!car.\+ino@{car.\+ino}}
+\subsubsection{\texorpdfstring{B\+A\+C\+K\+\_\+\+M\+\_\+\+E\+C\+HO}{BACK\_M\_ECHO}}
+{\footnotesize\ttfamily \#define B\+A\+C\+K\+\_\+\+M\+\_\+\+E\+C\+HO~22}
+
+\mbox{\Hypertarget{car_8ino_a283a085a4ca45da5313fb015386f1ae5}\label{car_8ino_a283a085a4ca45da5313fb015386f1ae5}} 
+\index{car.\+ino@{car.\+ino}!B\+A\+C\+K\+\_\+\+M\+\_\+\+T\+R\+IG@{B\+A\+C\+K\+\_\+\+M\+\_\+\+T\+R\+IG}}
+\index{B\+A\+C\+K\+\_\+\+M\+\_\+\+T\+R\+IG@{B\+A\+C\+K\+\_\+\+M\+\_\+\+T\+R\+IG}!car.\+ino@{car.\+ino}}
+\subsubsection{\texorpdfstring{B\+A\+C\+K\+\_\+\+M\+\_\+\+T\+R\+IG}{BACK\_M\_TRIG}}
+{\footnotesize\ttfamily \#define B\+A\+C\+K\+\_\+\+M\+\_\+\+T\+R\+IG~23}
+
+\mbox{\Hypertarget{car_8ino_a5d8f4fd2fefb0c3f623ae5c61e71574a}\label{car_8ino_a5d8f4fd2fefb0c3f623ae5c61e71574a}} 
+\index{car.\+ino@{car.\+ino}!B\+A\+C\+K\+\_\+\+R\+\_\+\+E\+C\+HO@{B\+A\+C\+K\+\_\+\+R\+\_\+\+E\+C\+HO}}
+\index{B\+A\+C\+K\+\_\+\+R\+\_\+\+E\+C\+HO@{B\+A\+C\+K\+\_\+\+R\+\_\+\+E\+C\+HO}!car.\+ino@{car.\+ino}}
+\subsubsection{\texorpdfstring{B\+A\+C\+K\+\_\+\+R\+\_\+\+E\+C\+HO}{BACK\_R\_ECHO}}
+{\footnotesize\ttfamily \#define B\+A\+C\+K\+\_\+\+R\+\_\+\+E\+C\+HO~29}
+
+\mbox{\Hypertarget{car_8ino_a7c460aada4d1c1ddbcf9c366f2236ebb}\label{car_8ino_a7c460aada4d1c1ddbcf9c366f2236ebb}} 
+\index{car.\+ino@{car.\+ino}!B\+A\+C\+K\+\_\+\+R\+\_\+\+T\+R\+IG@{B\+A\+C\+K\+\_\+\+R\+\_\+\+T\+R\+IG}}
+\index{B\+A\+C\+K\+\_\+\+R\+\_\+\+T\+R\+IG@{B\+A\+C\+K\+\_\+\+R\+\_\+\+T\+R\+IG}!car.\+ino@{car.\+ino}}
+\subsubsection{\texorpdfstring{B\+A\+C\+K\+\_\+\+R\+\_\+\+T\+R\+IG}{BACK\_R\_TRIG}}
+{\footnotesize\ttfamily \#define B\+A\+C\+K\+\_\+\+R\+\_\+\+T\+R\+IG~28}
+
+\mbox{\Hypertarget{car_8ino_ab326384eb90dc7dd1958ce8b09952513}\label{car_8ino_ab326384eb90dc7dd1958ce8b09952513}} 
+\index{car.\+ino@{car.\+ino}!F\+R\+O\+N\+T\+\_\+\+A\+\_\+\+P\+WN@{F\+R\+O\+N\+T\+\_\+\+A\+\_\+\+P\+WN}}
+\index{F\+R\+O\+N\+T\+\_\+\+A\+\_\+\+P\+WN@{F\+R\+O\+N\+T\+\_\+\+A\+\_\+\+P\+WN}!car.\+ino@{car.\+ino}}
+\subsubsection{\texorpdfstring{F\+R\+O\+N\+T\+\_\+\+A\+\_\+\+P\+WN}{FRONT\_A\_PWN}}
+{\footnotesize\ttfamily \#define F\+R\+O\+N\+T\+\_\+\+A\+\_\+\+P\+WN~11}
+
+\mbox{\Hypertarget{car_8ino_aae839574086fcabaf850f470644bc7a8}\label{car_8ino_aae839574086fcabaf850f470644bc7a8}} 
+\index{car.\+ino@{car.\+ino}!F\+R\+O\+N\+T\+\_\+\+B\+\_\+\+P\+WN@{F\+R\+O\+N\+T\+\_\+\+B\+\_\+\+P\+WN}}
+\index{F\+R\+O\+N\+T\+\_\+\+B\+\_\+\+P\+WN@{F\+R\+O\+N\+T\+\_\+\+B\+\_\+\+P\+WN}!car.\+ino@{car.\+ino}}
+\subsubsection{\texorpdfstring{F\+R\+O\+N\+T\+\_\+\+B\+\_\+\+P\+WN}{FRONT\_B\_PWN}}
+{\footnotesize\ttfamily \#define F\+R\+O\+N\+T\+\_\+\+B\+\_\+\+P\+WN~10}
+
+\mbox{\Hypertarget{car_8ino_abedc250958d71e2eb009a81184c703de}\label{car_8ino_abedc250958d71e2eb009a81184c703de}} 
+\index{car.\+ino@{car.\+ino}!F\+R\+O\+N\+T\+\_\+\+I\+N\+\_\+1@{F\+R\+O\+N\+T\+\_\+\+I\+N\+\_\+1}}
+\index{F\+R\+O\+N\+T\+\_\+\+I\+N\+\_\+1@{F\+R\+O\+N\+T\+\_\+\+I\+N\+\_\+1}!car.\+ino@{car.\+ino}}
+\subsubsection{\texorpdfstring{F\+R\+O\+N\+T\+\_\+\+I\+N\+\_\+1}{FRONT\_IN\_1}}
+{\footnotesize\ttfamily \#define F\+R\+O\+N\+T\+\_\+\+I\+N\+\_\+1~48}
+
+\mbox{\Hypertarget{car_8ino_a9468ef02de181ac8503508ff005cfa40}\label{car_8ino_a9468ef02de181ac8503508ff005cfa40}} 
+\index{car.\+ino@{car.\+ino}!F\+R\+O\+N\+T\+\_\+\+I\+N\+\_\+2@{F\+R\+O\+N\+T\+\_\+\+I\+N\+\_\+2}}
+\index{F\+R\+O\+N\+T\+\_\+\+I\+N\+\_\+2@{F\+R\+O\+N\+T\+\_\+\+I\+N\+\_\+2}!car.\+ino@{car.\+ino}}
+\subsubsection{\texorpdfstring{F\+R\+O\+N\+T\+\_\+\+I\+N\+\_\+2}{FRONT\_IN\_2}}
+{\footnotesize\ttfamily \#define F\+R\+O\+N\+T\+\_\+\+I\+N\+\_\+2~49}
+
+\mbox{\Hypertarget{car_8ino_a4754d2774432266bf9f066638c6e06d7}\label{car_8ino_a4754d2774432266bf9f066638c6e06d7}} 
+\index{car.\+ino@{car.\+ino}!F\+R\+O\+N\+T\+\_\+\+I\+N\+\_\+3@{F\+R\+O\+N\+T\+\_\+\+I\+N\+\_\+3}}
+\index{F\+R\+O\+N\+T\+\_\+\+I\+N\+\_\+3@{F\+R\+O\+N\+T\+\_\+\+I\+N\+\_\+3}!car.\+ino@{car.\+ino}}
+\subsubsection{\texorpdfstring{F\+R\+O\+N\+T\+\_\+\+I\+N\+\_\+3}{FRONT\_IN\_3}}
+{\footnotesize\ttfamily \#define F\+R\+O\+N\+T\+\_\+\+I\+N\+\_\+3~46}
+
+\mbox{\Hypertarget{car_8ino_a9c739ab0e8d980f8855e69230bc919ca}\label{car_8ino_a9c739ab0e8d980f8855e69230bc919ca}} 
+\index{car.\+ino@{car.\+ino}!F\+R\+O\+N\+T\+\_\+\+I\+N\+\_\+4@{F\+R\+O\+N\+T\+\_\+\+I\+N\+\_\+4}}
+\index{F\+R\+O\+N\+T\+\_\+\+I\+N\+\_\+4@{F\+R\+O\+N\+T\+\_\+\+I\+N\+\_\+4}!car.\+ino@{car.\+ino}}
+\subsubsection{\texorpdfstring{F\+R\+O\+N\+T\+\_\+\+I\+N\+\_\+4}{FRONT\_IN\_4}}
+{\footnotesize\ttfamily \#define F\+R\+O\+N\+T\+\_\+\+I\+N\+\_\+4~47}
+
+\mbox{\Hypertarget{car_8ino_a88d5c939e1bd2fdd56ff64aefa21359e}\label{car_8ino_a88d5c939e1bd2fdd56ff64aefa21359e}} 
+\index{car.\+ino@{car.\+ino}!F\+R\+O\+N\+T\+\_\+\+L\+\_\+\+E\+C\+HO@{F\+R\+O\+N\+T\+\_\+\+L\+\_\+\+E\+C\+HO}}
+\index{F\+R\+O\+N\+T\+\_\+\+L\+\_\+\+E\+C\+HO@{F\+R\+O\+N\+T\+\_\+\+L\+\_\+\+E\+C\+HO}!car.\+ino@{car.\+ino}}
+\subsubsection{\texorpdfstring{F\+R\+O\+N\+T\+\_\+\+L\+\_\+\+E\+C\+HO}{FRONT\_L\_ECHO}}
+{\footnotesize\ttfamily \#define F\+R\+O\+N\+T\+\_\+\+L\+\_\+\+E\+C\+HO~33}
+
+\mbox{\Hypertarget{car_8ino_a338e185f573d6757f7924bc5b599466b}\label{car_8ino_a338e185f573d6757f7924bc5b599466b}} 
+\index{car.\+ino@{car.\+ino}!F\+R\+O\+N\+T\+\_\+\+L\+\_\+\+T\+R\+IG@{F\+R\+O\+N\+T\+\_\+\+L\+\_\+\+T\+R\+IG}}
+\index{F\+R\+O\+N\+T\+\_\+\+L\+\_\+\+T\+R\+IG@{F\+R\+O\+N\+T\+\_\+\+L\+\_\+\+T\+R\+IG}!car.\+ino@{car.\+ino}}
+\subsubsection{\texorpdfstring{F\+R\+O\+N\+T\+\_\+\+L\+\_\+\+T\+R\+IG}{FRONT\_L\_TRIG}}
+{\footnotesize\ttfamily \#define F\+R\+O\+N\+T\+\_\+\+L\+\_\+\+T\+R\+IG~32}
+
+\mbox{\Hypertarget{car_8ino_a27970d12cc04360f3b07ca8fcfb7a2b9}\label{car_8ino_a27970d12cc04360f3b07ca8fcfb7a2b9}} 
+\index{car.\+ino@{car.\+ino}!F\+R\+O\+N\+T\+\_\+\+M\+\_\+\+E\+C\+HO@{F\+R\+O\+N\+T\+\_\+\+M\+\_\+\+E\+C\+HO}}
+\index{F\+R\+O\+N\+T\+\_\+\+M\+\_\+\+E\+C\+HO@{F\+R\+O\+N\+T\+\_\+\+M\+\_\+\+E\+C\+HO}!car.\+ino@{car.\+ino}}
+\subsubsection{\texorpdfstring{F\+R\+O\+N\+T\+\_\+\+M\+\_\+\+E\+C\+HO}{FRONT\_M\_ECHO}}
+{\footnotesize\ttfamily \#define F\+R\+O\+N\+T\+\_\+\+M\+\_\+\+E\+C\+HO~35}
+
+\mbox{\Hypertarget{car_8ino_a964db28e3b1061f3f048c2798cb62765}\label{car_8ino_a964db28e3b1061f3f048c2798cb62765}} 
+\index{car.\+ino@{car.\+ino}!F\+R\+O\+N\+T\+\_\+\+M\+\_\+\+T\+R\+IG@{F\+R\+O\+N\+T\+\_\+\+M\+\_\+\+T\+R\+IG}}
+\index{F\+R\+O\+N\+T\+\_\+\+M\+\_\+\+T\+R\+IG@{F\+R\+O\+N\+T\+\_\+\+M\+\_\+\+T\+R\+IG}!car.\+ino@{car.\+ino}}
+\subsubsection{\texorpdfstring{F\+R\+O\+N\+T\+\_\+\+M\+\_\+\+T\+R\+IG}{FRONT\_M\_TRIG}}
+{\footnotesize\ttfamily \#define F\+R\+O\+N\+T\+\_\+\+M\+\_\+\+T\+R\+IG~34}
+
+\mbox{\Hypertarget{car_8ino_a9b392165325fed7e3198fcfdd753747a}\label{car_8ino_a9b392165325fed7e3198fcfdd753747a}} 
+\index{car.\+ino@{car.\+ino}!F\+R\+O\+N\+T\+\_\+\+R\+\_\+\+E\+C\+HO@{F\+R\+O\+N\+T\+\_\+\+R\+\_\+\+E\+C\+HO}}
+\index{F\+R\+O\+N\+T\+\_\+\+R\+\_\+\+E\+C\+HO@{F\+R\+O\+N\+T\+\_\+\+R\+\_\+\+E\+C\+HO}!car.\+ino@{car.\+ino}}
+\subsubsection{\texorpdfstring{F\+R\+O\+N\+T\+\_\+\+R\+\_\+\+E\+C\+HO}{FRONT\_R\_ECHO}}
+{\footnotesize\ttfamily \#define F\+R\+O\+N\+T\+\_\+\+R\+\_\+\+E\+C\+HO~31}
+
+\mbox{\Hypertarget{car_8ino_acbbe325ef617580d92b0e4e7fde4c56d}\label{car_8ino_acbbe325ef617580d92b0e4e7fde4c56d}} 
+\index{car.\+ino@{car.\+ino}!F\+R\+O\+N\+T\+\_\+\+R\+\_\+\+T\+R\+IG@{F\+R\+O\+N\+T\+\_\+\+R\+\_\+\+T\+R\+IG}}
+\index{F\+R\+O\+N\+T\+\_\+\+R\+\_\+\+T\+R\+IG@{F\+R\+O\+N\+T\+\_\+\+R\+\_\+\+T\+R\+IG}!car.\+ino@{car.\+ino}}
+\subsubsection{\texorpdfstring{F\+R\+O\+N\+T\+\_\+\+R\+\_\+\+T\+R\+IG}{FRONT\_R\_TRIG}}
+{\footnotesize\ttfamily \#define F\+R\+O\+N\+T\+\_\+\+R\+\_\+\+T\+R\+IG~30}
+
+
+
+\subsection{Function Documentation}
+\mbox{\Hypertarget{car_8ino_a2915381729924a9acc25236cadf9391d}\label{car_8ino_a2915381729924a9acc25236cadf9391d}} 
+\index{car.\+ino@{car.\+ino}!backward@{backward}}
+\index{backward@{backward}!car.\+ino@{car.\+ino}}
+\subsubsection{\texorpdfstring{backward()}{backward()}}
+{\footnotesize\ttfamily void backward (\begin{DoxyParamCaption}\item[{int}]{speed }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{car_8ino_aefcffdc351fa6a2c75de903b76d7cde5}\label{car_8ino_aefcffdc351fa6a2c75de903b76d7cde5}} 
+\index{car.\+ino@{car.\+ino}!backward\+For\+Back\+Left@{backward\+For\+Back\+Left}}
+\index{backward\+For\+Back\+Left@{backward\+For\+Back\+Left}!car.\+ino@{car.\+ino}}
+\subsubsection{\texorpdfstring{backward\+For\+Back\+Left()}{backwardForBackLeft()}}
+{\footnotesize\ttfamily void backward\+For\+Back\+Left (\begin{DoxyParamCaption}\item[{int}]{speed }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{car_8ino_a132295235efc0d707c2e34134af320d4}\label{car_8ino_a132295235efc0d707c2e34134af320d4}} 
+\index{car.\+ino@{car.\+ino}!backward\+For\+Back\+Right@{backward\+For\+Back\+Right}}
+\index{backward\+For\+Back\+Right@{backward\+For\+Back\+Right}!car.\+ino@{car.\+ino}}
+\subsubsection{\texorpdfstring{backward\+For\+Back\+Right()}{backwardForBackRight()}}
+{\footnotesize\ttfamily void backward\+For\+Back\+Right (\begin{DoxyParamCaption}\item[{int}]{speed }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{car_8ino_af1ff7cc133f26792314dc587d391a2e9}\label{car_8ino_af1ff7cc133f26792314dc587d391a2e9}} 
+\index{car.\+ino@{car.\+ino}!backward\+For\+Front\+Left@{backward\+For\+Front\+Left}}
+\index{backward\+For\+Front\+Left@{backward\+For\+Front\+Left}!car.\+ino@{car.\+ino}}
+\subsubsection{\texorpdfstring{backward\+For\+Front\+Left()}{backwardForFrontLeft()}}
+{\footnotesize\ttfamily void backward\+For\+Front\+Left (\begin{DoxyParamCaption}\item[{int}]{speed }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{car_8ino_a9303a11d73ff753cab62587a431ad893}\label{car_8ino_a9303a11d73ff753cab62587a431ad893}} 
+\index{car.\+ino@{car.\+ino}!backward\+For\+Front\+Right@{backward\+For\+Front\+Right}}
+\index{backward\+For\+Front\+Right@{backward\+For\+Front\+Right}!car.\+ino@{car.\+ino}}
+\subsubsection{\texorpdfstring{backward\+For\+Front\+Right()}{backwardForFrontRight()}}
+{\footnotesize\ttfamily void backward\+For\+Front\+Right (\begin{DoxyParamCaption}\item[{int}]{speed }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{car_8ino_a3b887a1e60a824c3e9e9c7e41f0245cf}\label{car_8ino_a3b887a1e60a824c3e9e9c7e41f0245cf}} 
+\index{car.\+ino@{car.\+ino}!backward\+Left@{backward\+Left}}
+\index{backward\+Left@{backward\+Left}!car.\+ino@{car.\+ino}}
+\subsubsection{\texorpdfstring{backward\+Left()}{backwardLeft()}}
+{\footnotesize\ttfamily void backward\+Left (\begin{DoxyParamCaption}\item[{int}]{speed }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{car_8ino_a4a2b1571265ea8470805dfb28713bc0f}\label{car_8ino_a4a2b1571265ea8470805dfb28713bc0f}} 
+\index{car.\+ino@{car.\+ino}!backward\+Right@{backward\+Right}}
+\index{backward\+Right@{backward\+Right}!car.\+ino@{car.\+ino}}
+\subsubsection{\texorpdfstring{backward\+Right()}{backwardRight()}}
+{\footnotesize\ttfamily void backward\+Right (\begin{DoxyParamCaption}\item[{int}]{speed }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{car_8ino_a2cca1c020108fcb2373c68a07273a43b}\label{car_8ino_a2cca1c020108fcb2373c68a07273a43b}} 
+\index{car.\+ino@{car.\+ino}!BT@{BT}}
+\index{BT@{BT}!car.\+ino@{car.\+ino}}
+\subsubsection{\texorpdfstring{B\+T()}{BT()}}
+{\footnotesize\ttfamily Software\+Serial BT (\begin{DoxyParamCaption}\item[{52}]{,  }\item[{53}]{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{car_8ino_ad46b410153632e6620adf44c21873de5}\label{car_8ino_ad46b410153632e6620adf44c21873de5}} 
+\index{car.\+ino@{car.\+ino}!carry\+On@{carry\+On}}
+\index{carry\+On@{carry\+On}!car.\+ino@{car.\+ino}}
+\subsubsection{\texorpdfstring{carry\+On()}{carryOn()}}
+{\footnotesize\ttfamily bool carry\+On (\begin{DoxyParamCaption}\item[{String}]{dir }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{car_8ino_a67c46e128339bcaf0c044d085cf708ce}\label{car_8ino_a67c46e128339bcaf0c044d085cf708ce}} 
+\index{car.\+ino@{car.\+ino}!check\+Back@{check\+Back}}
+\index{check\+Back@{check\+Back}!car.\+ino@{car.\+ino}}
+\subsubsection{\texorpdfstring{check\+Back()}{checkBack()}}
+{\footnotesize\ttfamily int check\+Back (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{car_8ino_a171443d8ec5e6f6ba918a182a909ffcf}\label{car_8ino_a171443d8ec5e6f6ba918a182a909ffcf}} 
+\index{car.\+ino@{car.\+ino}!check\+Back\+Left@{check\+Back\+Left}}
+\index{check\+Back\+Left@{check\+Back\+Left}!car.\+ino@{car.\+ino}}
+\subsubsection{\texorpdfstring{check\+Back\+Left()}{checkBackLeft()}}
+{\footnotesize\ttfamily int check\+Back\+Left (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{car_8ino_ab0f5a07df3f52892a9140ec6b8d1622f}\label{car_8ino_ab0f5a07df3f52892a9140ec6b8d1622f}} 
+\index{car.\+ino@{car.\+ino}!check\+Back\+Right@{check\+Back\+Right}}
+\index{check\+Back\+Right@{check\+Back\+Right}!car.\+ino@{car.\+ino}}
+\subsubsection{\texorpdfstring{check\+Back\+Right()}{checkBackRight()}}
+{\footnotesize\ttfamily int check\+Back\+Right (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{car_8ino_a74e32c456d4ea8fb25c0087eb4b01b00}\label{car_8ino_a74e32c456d4ea8fb25c0087eb4b01b00}} 
+\index{car.\+ino@{car.\+ino}!check\+Distance@{check\+Distance}}
+\index{check\+Distance@{check\+Distance}!car.\+ino@{car.\+ino}}
+\subsubsection{\texorpdfstring{check\+Distance()}{checkDistance()}}
+{\footnotesize\ttfamily int check\+Distance (\begin{DoxyParamCaption}\item[{int}]{trig,  }\item[{int}]{echo }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{car_8ino_ad38f4b26a5e3293787a6d4c7bd4d1e6f}\label{car_8ino_ad38f4b26a5e3293787a6d4c7bd4d1e6f}} 
+\index{car.\+ino@{car.\+ino}!check\+Fwd@{check\+Fwd}}
+\index{check\+Fwd@{check\+Fwd}!car.\+ino@{car.\+ino}}
+\subsubsection{\texorpdfstring{check\+Fwd()}{checkFwd()}}
+{\footnotesize\ttfamily int check\+Fwd (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{car_8ino_a68a65fca2a14cfa8a8c98f11e6f75d98}\label{car_8ino_a68a65fca2a14cfa8a8c98f11e6f75d98}} 
+\index{car.\+ino@{car.\+ino}!check\+Fwd\+Left@{check\+Fwd\+Left}}
+\index{check\+Fwd\+Left@{check\+Fwd\+Left}!car.\+ino@{car.\+ino}}
+\subsubsection{\texorpdfstring{check\+Fwd\+Left()}{checkFwdLeft()}}
+{\footnotesize\ttfamily int check\+Fwd\+Left (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{car_8ino_a18eac13eef94645c75ea3e5b2464d197}\label{car_8ino_a18eac13eef94645c75ea3e5b2464d197}} 
+\index{car.\+ino@{car.\+ino}!check\+Fwd\+Right@{check\+Fwd\+Right}}
+\index{check\+Fwd\+Right@{check\+Fwd\+Right}!car.\+ino@{car.\+ino}}
+\subsubsection{\texorpdfstring{check\+Fwd\+Right()}{checkFwdRight()}}
+{\footnotesize\ttfamily int check\+Fwd\+Right (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{car_8ino_ab056fd4ab103d47f70a5ab4a469d1c08}\label{car_8ino_ab056fd4ab103d47f70a5ab4a469d1c08}} 
+\index{car.\+ino@{car.\+ino}!decide@{decide}}
+\index{decide@{decide}!car.\+ino@{car.\+ino}}
+\subsubsection{\texorpdfstring{decide()}{decide()}}
+{\footnotesize\ttfamily String decide (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{car_8ino_a1ad7d08045323c724751d2db3c0349d6}\label{car_8ino_a1ad7d08045323c724751d2db3c0349d6}} 
+\index{car.\+ino@{car.\+ino}!forward@{forward}}
+\index{forward@{forward}!car.\+ino@{car.\+ino}}
+\subsubsection{\texorpdfstring{forward()}{forward()}}
+{\footnotesize\ttfamily void forward (\begin{DoxyParamCaption}\item[{int}]{speed }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{car_8ino_a114907bb25a227c7815fdf0f7fe9e7a2}\label{car_8ino_a114907bb25a227c7815fdf0f7fe9e7a2}} 
+\index{car.\+ino@{car.\+ino}!forward\+For\+Back\+Left@{forward\+For\+Back\+Left}}
+\index{forward\+For\+Back\+Left@{forward\+For\+Back\+Left}!car.\+ino@{car.\+ino}}
+\subsubsection{\texorpdfstring{forward\+For\+Back\+Left()}{forwardForBackLeft()}}
+{\footnotesize\ttfamily void forward\+For\+Back\+Left (\begin{DoxyParamCaption}\item[{int}]{speed }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{car_8ino_ac5a4a877a2ec86535ec734dfe82e1e26}\label{car_8ino_ac5a4a877a2ec86535ec734dfe82e1e26}} 
+\index{car.\+ino@{car.\+ino}!forward\+For\+Back\+Right@{forward\+For\+Back\+Right}}
+\index{forward\+For\+Back\+Right@{forward\+For\+Back\+Right}!car.\+ino@{car.\+ino}}
+\subsubsection{\texorpdfstring{forward\+For\+Back\+Right()}{forwardForBackRight()}}
+{\footnotesize\ttfamily void forward\+For\+Back\+Right (\begin{DoxyParamCaption}\item[{int}]{speed }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{car_8ino_a43a8c2c3049fc50d921a6f6b5fe5cda7}\label{car_8ino_a43a8c2c3049fc50d921a6f6b5fe5cda7}} 
+\index{car.\+ino@{car.\+ino}!forward\+For\+Front\+Left@{forward\+For\+Front\+Left}}
+\index{forward\+For\+Front\+Left@{forward\+For\+Front\+Left}!car.\+ino@{car.\+ino}}
+\subsubsection{\texorpdfstring{forward\+For\+Front\+Left()}{forwardForFrontLeft()}}
+{\footnotesize\ttfamily void forward\+For\+Front\+Left (\begin{DoxyParamCaption}\item[{int}]{speed }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{car_8ino_a350b91f1aa7e8d8d431d1243f5de8ce2}\label{car_8ino_a350b91f1aa7e8d8d431d1243f5de8ce2}} 
+\index{car.\+ino@{car.\+ino}!forward\+For\+Front\+Right@{forward\+For\+Front\+Right}}
+\index{forward\+For\+Front\+Right@{forward\+For\+Front\+Right}!car.\+ino@{car.\+ino}}
+\subsubsection{\texorpdfstring{forward\+For\+Front\+Right()}{forwardForFrontRight()}}
+{\footnotesize\ttfamily void forward\+For\+Front\+Right (\begin{DoxyParamCaption}\item[{int}]{speed }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{car_8ino_a6bea6c9230620fc358ac2fe3cdc495ee}\label{car_8ino_a6bea6c9230620fc358ac2fe3cdc495ee}} 
+\index{car.\+ino@{car.\+ino}!forward\+Left@{forward\+Left}}
+\index{forward\+Left@{forward\+Left}!car.\+ino@{car.\+ino}}
+\subsubsection{\texorpdfstring{forward\+Left()}{forwardLeft()}}
+{\footnotesize\ttfamily void forward\+Left (\begin{DoxyParamCaption}\item[{int}]{speed }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{car_8ino_aff9a5f1aef152d83f0f6aec7ff3a9c79}\label{car_8ino_aff9a5f1aef152d83f0f6aec7ff3a9c79}} 
+\index{car.\+ino@{car.\+ino}!forward\+Right@{forward\+Right}}
+\index{forward\+Right@{forward\+Right}!car.\+ino@{car.\+ino}}
+\subsubsection{\texorpdfstring{forward\+Right()}{forwardRight()}}
+{\footnotesize\ttfamily void forward\+Right (\begin{DoxyParamCaption}\item[{int}]{speed }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{car_8ino_afe461d27b9c48d5921c00d521181f12f}\label{car_8ino_afe461d27b9c48d5921c00d521181f12f}} 
+\index{car.\+ino@{car.\+ino}!loop@{loop}}
+\index{loop@{loop}!car.\+ino@{car.\+ino}}
+\subsubsection{\texorpdfstring{loop()}{loop()}}
+{\footnotesize\ttfamily void loop (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{car_8ino_a4fc01d736fe50cf5b977f755b675f11d}\label{car_8ino_a4fc01d736fe50cf5b977f755b675f11d}} 
+\index{car.\+ino@{car.\+ino}!setup@{setup}}
+\index{setup@{setup}!car.\+ino@{car.\+ino}}
+\subsubsection{\texorpdfstring{setup()}{setup()}}
+{\footnotesize\ttfamily void setup (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{car_8ino_af597af78b8192bd4439e8d1d570e95a1}\label{car_8ino_af597af78b8192bd4439e8d1d570e95a1}} 
+\index{car.\+ino@{car.\+ino}!standard\+Run@{standard\+Run}}
+\index{standard\+Run@{standard\+Run}!car.\+ino@{car.\+ino}}
+\subsubsection{\texorpdfstring{standard\+Run()}{standardRun()}}
+{\footnotesize\ttfamily void standard\+Run (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{car_8ino_a4823aa91e33925c0da5969f5011c07da}\label{car_8ino_a4823aa91e33925c0da5969f5011c07da}} 
+\index{car.\+ino@{car.\+ino}!stop\+All@{stop\+All}}
+\index{stop\+All@{stop\+All}!car.\+ino@{car.\+ino}}
+\subsubsection{\texorpdfstring{stop\+All()}{stopAll()}}
+{\footnotesize\ttfamily void stop\+All (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{car_8ino_adcc2352cf3d5cf7317b119265c8deb03}\label{car_8ino_adcc2352cf3d5cf7317b119265c8deb03}} 
+\index{car.\+ino@{car.\+ino}!turn\+Left@{turn\+Left}}
+\index{turn\+Left@{turn\+Left}!car.\+ino@{car.\+ino}}
+\subsubsection{\texorpdfstring{turn\+Left()}{turnLeft()}}
+{\footnotesize\ttfamily void turn\+Left (\begin{DoxyParamCaption}\item[{int}]{speed }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{car_8ino_af9cc2a3cfa7536ca9039202968bc40b5}\label{car_8ino_af9cc2a3cfa7536ca9039202968bc40b5}} 
+\index{car.\+ino@{car.\+ino}!turn\+Right@{turn\+Right}}
+\index{turn\+Right@{turn\+Right}!car.\+ino@{car.\+ino}}
+\subsubsection{\texorpdfstring{turn\+Right()}{turnRight()}}
+{\footnotesize\ttfamily void turn\+Right (\begin{DoxyParamCaption}\item[{int}]{speed }\end{DoxyParamCaption})}
+
