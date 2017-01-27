@@ -1,6 +1,8 @@
 #include "SoftwareSerial.h"
 SoftwareSerial BT(52, 53);
 
+bool canRun = false;
+
 #define FRONT_L_TRIG 32
 #define FRONT_L_ECHO 33
 #define FRONT_M_TRIG 34
@@ -27,18 +29,7 @@ SoftwareSerial BT(52, 53);
 #define BACK_IN_4 44
 
 void setup() {
-
-  //make it clear that a new run is taking place
-  for (int i = 0; i < 6; i ++) {
-    BT.println(" ");
-  }
-
-  BT.println("START OF NEW RUN");
-
-  for (int i = 0; i < 6; i ++) {
-    BT.println(" ");
-  }
-
+  BT.begin(9600);
   pinMode(FRONT_L_TRIG, OUTPUT);
   pinMode(FRONT_L_ECHO, INPUT);
   pinMode(FRONT_M_TRIG, OUTPUT);
@@ -59,24 +50,33 @@ void setup() {
   pinMode(FRONT_IN_2, OUTPUT);
   pinMode(FRONT_IN_3, OUTPUT);
   pinMode(FRONT_IN_4, OUTPUT);
+  pinMode(13, OUTPUT);
+
+  delay(3000);//delay to connect via BT
 }
 
 void loop() {
-  turnLeft(255);
-  delay(100);
-  stopAll();
+  BT.println("starting loop");
+  standardRun(255);
 }
 
-void standardRun() {
+void standardRun(int speed) {
   String dir = decide();
+  BT.println(dir);
   while (carryOn(dir)) {
     if (dir == "forward") {
-      forward(255);
+      forward(speed);
     } else if (dir == "back") {
-      backward(255);
+      backward(speed);
+    } else if (dir == "left") {
+      turnLeft(speed);
+      delay(15);
+    } else if (dir == "right") {
+      turnRight(speed);
+      delay(15);
     }
+    stopAll();
   }
-  stopAll();
 }
 
 bool carryOn(String dir) {
@@ -84,17 +84,17 @@ bool carryOn(String dir) {
   if (dir == "forward") {
 
     if (checkFwd() < 20) {
-      BT.println("checkFwd() detected object at " + checkFwd());
+      BT.println("checkFwd() detected object");
       return false;
     }
 
     else if (checkFwdLeft() < 20) {
-      BT.println("checkFwdLeft() detected object at " + checkFwdLeft());
+      BT.println("checkFwdLeft() detected object");
       return false;
     }
 
     else if (checkFwdRight() < 20) {
-      BT.println("checkFwdRight() detected object at " + checkFwdRight());
+      BT.println("checkFwdRight() detected object");
       return false;
     }
 
@@ -103,17 +103,17 @@ bool carryOn(String dir) {
     }
   } else if (dir == "back") {
     if (checkBack() < 20) {
-      BT.println("checkBack() detected object at " + checkBack());
+      BT.println("checkBack() detected object");
       return false;
     }
 
     else if (checkBackLeft() < 20) {
-      BT.println("checkBackLeft() detected object at " + checkBackLeft());
+      BT.println("checkBackLeft() detected object");
       return false;
     }
 
     else if (checkBackRight() < 20) {
-      BT.println("checkBackRight() detected object at " + checkBackRight());
+      BT.println("checkBackRight() detected object");
       return false;
     }
 
@@ -126,31 +126,31 @@ bool carryOn(String dir) {
 String decide() {
   int forward = checkFwd();
   int back = checkBack();
-  //  if (forward < 50 && back < 50) {
-  //    /*will have to turn
-  //      decide which direction
-  //
-  //      frontLeft and backright go together
-  //      as do backleft and frontRight
-  //      so we can start by checking those
-  //    */
-  //    //turning left
-  //    int frontLeft = checkFwdLeft();
-  //    int backRight = checkBackRight();
-  //    int left = (frontLeft + backRight)/2;
-  //
-  //    //turning right
-  //    int frontRight = checkFwdRight();
-  //    int backLeft = checkBackLeft();
-  //    int right = (frontRight + backLeft)/2;
-  //
-  //    if (left > right){
-  //      //TODO implement the actual turning stuff something like
-  //      //left(int degree) but have degree in 5 degree increments maybe?
-  //      //so if degree is 18 would turn 90 degrees
-  //    }
-  //  }
-  if (forward > back) {
+  if (forward < 20 && back < 20) {
+    /*will have to turn
+      decide which direction
+
+      frontLeft and backright go together
+      as do backleft and frontRight
+      so we can start by checking those
+    */
+    //turning left
+    int frontLeft = checkFwdLeft();
+    int backRight = checkBackRight();
+    int left = (frontLeft + backRight) / 2;
+
+    //turning right
+    int frontRight = checkFwdRight();
+    int backLeft = checkBackLeft();
+    int right = (frontRight + backLeft) / 2;
+
+    if (left > right) {
+      return "left";
+    } else {
+      return "right";
+    }
+  }
+  else if (forward > back) {
     return "forward";
   } else if (back > forward) {
     return "back";
@@ -170,7 +170,7 @@ void stopAll() {
   digitalWrite(FRONT_IN_4, LOW);
 }
 
-void turnLeft(int speed) {//going forwards 
+void turnLeft(int speed) {//going forwards
   //a delay of 675 turns it 90 degrees at a speed of 255
   forwardLeft(255);
   backwardRight(255);
