@@ -59,16 +59,12 @@ void setup() {
   pinMode(FRONT_IN_2, OUTPUT);
   pinMode(FRONT_IN_3, OUTPUT);
   pinMode(FRONT_IN_4, OUTPUT);
-
-  turnLeft(255);
-  delay(675);
-  stopAll();
 }
 
 void loop() {
-//  turnLeft(255);
-//  delay(100);
-//  stopAll();
+  turnLeft(255);
+  delay(100);
+  stopAll();
 }
 
 void standardRun() {
@@ -174,12 +170,13 @@ void stopAll() {
   digitalWrite(FRONT_IN_4, LOW);
 }
 
-void turnLeft(int speed) {
+void turnLeft(int speed) {//going forwards 
+  //a delay of 675 turns it 90 degrees at a speed of 255
   forwardLeft(255);
   backwardRight(255);
 }
 
-void turnRight(int speed) {
+void turnRight(int speed) {//going forwards
   forwardRight(speed);
   backwardLeft(speed);
 }
