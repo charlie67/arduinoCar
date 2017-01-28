@@ -1,6 +1,3 @@
-#include "SoftwareSerial.h"
-SoftwareSerial BT(52, 53);
-
 #define FRONT_L_TRIG 32
 #define FRONT_L_ECHO 33
 #define FRONT_M_TRIG 34
@@ -27,7 +24,7 @@ SoftwareSerial BT(52, 53);
 #define BACK_IN_4 44
 
 void setup() {
-  BT.begin(9600);
+  Serial.begin(9600);
   Serial.begin(9600);
   pinMode(FRONT_L_TRIG, OUTPUT);
   pinMode(FRONT_L_ECHO, INPUT);
@@ -51,11 +48,11 @@ void setup() {
   pinMode(FRONT_IN_4, OUTPUT);
   pinMode(13, OUTPUT);
 
-  delay(3000);//delay to connect via BT
+  delay(3000);//delay to connect via Serial
 }
 
 void loop() {
-  BT.println("starting loop");
+  Serial.println("starting loop");
   standardRun();
 }
 
@@ -98,18 +95,18 @@ void drectionTestLoop() {
 
 void standardRun() {
   String dir = decide();
-  BT.println(dir);
+  Serial.println(dir);
   if (dir == "forward") {
-    BT.println("going forward");
+    Serial.println("going forward");
     forward(255);
   } else if (dir == "back") {
-    BT.println("going back");
+    Serial.println("going back");
     backward(255);
   } else if (dir == "left") {
-    BT.println("going left");
+    Serial.println("going left");
     turnLeft(255);
   } else if (dir == "right") {
-    BT.println("going right");
+    Serial.println("going right");
     turnRight(255);
   }
 }
@@ -119,17 +116,17 @@ bool carryOn(String dir) {
   if (dir == "forward") {
 
     if (checkFwd() < 20) {
-      BT.println("checkFwd() detected object");
+      Serial.println("checkFwd() detected object");
       return false;
     }
 
     else if (checkFwdLeft() < 20) {
-      BT.println("checkFwdLeft() detected object");
+      Serial.println("checkFwdLeft() detected object");
       return false;
     }
 
     else if (checkFwdRight() < 20) {
-      BT.println("checkFwdRight() detected object");
+      Serial.println("checkFwdRight() detected object");
       return false;
     }
 
@@ -138,17 +135,17 @@ bool carryOn(String dir) {
     }
   } else if (dir == "back") {
     if (checkBack() < 20) {
-      BT.println("checkBack() detected object");
+      Serial.println("checkBack() detected object");
       return false;
     }
 
     else if (checkBackLeft() < 20) {
-      BT.println("checkBackLeft() detected object");
+      Serial.println("checkBackLeft() detected object");
       return false;
     }
 
     else if (checkBackRight() < 20) {
-      BT.println("checkBackRight() detected object");
+      Serial.println("checkBackRight() detected object");
       return false;
     }
 
@@ -243,7 +240,7 @@ void forwardRight(int speed) {//moves right forwards
 }
 
 void backward(int speed) {
-  BT.println("back at speed ");
+  Serial.println("back at speed ");
   backwardForBackLeft(speed);
   backwardForBackRight(speed);
   backwardForFrontLeft(speed);
@@ -279,7 +276,7 @@ void backwardForFrontRight(int speed) {
 }
 
 void forward(int speed) {
-  BT.println("forwards at speed ");
+  Serial.println("forwards at speed ");
   forwardForBackLeft(speed);
   forwardForBackRight(speed);
   forwardForFrontLeft(speed);
