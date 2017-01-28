@@ -169,7 +169,7 @@ bool carryOn(String dir) {
 String decide() {
   int forward = checkFwd();
   int back = checkBack();
-  if (forward < 20 && back < 20) {
+  if ((forward < 10 && back < 10) && (checkLeft() > 10 || checkRight() > 10)) {
     /*will have to turn
       decide which direction
 
@@ -194,10 +194,8 @@ String decide() {
     }
   }
   else if (forward > back) {
-    Serial.println(forward);
     return "forward";
   } else if (back > forward) {
-    Serial.println(back);
     return "back";
   } else {
     return "forward";
