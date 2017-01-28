@@ -25,7 +25,6 @@
 
 void setup() {
   Serial.begin(9600);
-  Serial.begin(9600);
   pinMode(FRONT_L_TRIG, OUTPUT);
   pinMode(FRONT_L_ECHO, INPUT);
   pinMode(FRONT_M_TRIG, OUTPUT);
@@ -47,8 +46,6 @@ void setup() {
   pinMode(FRONT_IN_3, OUTPUT);
   pinMode(FRONT_IN_4, OUTPUT);
   pinMode(13, OUTPUT);
-
-  delay(3000);//delay to connect via Serial
 }
 
 void loop() {
@@ -189,8 +186,10 @@ String decide() {
     }
   }
   else if (forward > back) {
+    Serial.println(forward);
     return "forward";
   } else if (back > forward) {
+    Serial.println(back);
     return "back";
   } else {
     return "forward";
@@ -240,7 +239,6 @@ void forwardRight(int speed) {//moves right forwards
 }
 
 void backward(int speed) {
-  Serial.println("back at speed ");
   backwardForBackLeft(speed);
   backwardForBackRight(speed);
   backwardForFrontLeft(speed);
@@ -276,7 +274,6 @@ void backwardForFrontRight(int speed) {
 }
 
 void forward(int speed) {
-  Serial.println("forwards at speed ");
   forwardForBackLeft(speed);
   forwardForBackRight(speed);
   forwardForFrontLeft(speed);
