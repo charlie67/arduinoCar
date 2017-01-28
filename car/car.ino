@@ -120,18 +120,18 @@ bool carryOn(String dir) {
   //only need to check the direction the car is moving
   if (dir == "forward") {
 
-    if (checkFwd() < 20) {
-      Serial.println("checkFwd() detected object");
+    if (checkFwd() < 10) {
+      Serial.println("Can't continue checkFwd() detected object");
       return false;
     }
 
-    else if (checkFwdLeft() < 20) {
-      Serial.println("checkFwdLeft() detected object");
+    else if (checkFwdLeft() < 10) {
+      Serial.println("Can't continue checkFwdLeft() detected object");
       return false;
     }
 
-    else if (checkFwdRight() < 20) {
-      Serial.println("checkFwdRight() detected object");
+    else if (checkFwdRight() < 10) {
+      Serial.println("Can't continue checkFwdRight() detected object");
       return false;
     }
 
@@ -139,18 +139,18 @@ bool carryOn(String dir) {
       return true;
     }
   } else if (dir == "back") {
-    if (checkBack() < 20) {
-      Serial.println("checkBack() detected object");
+    if (checkBack() < 10) {
+      Serial.println("Can't continue checkBack() detected object");
       return false;
     }
 
-    else if (checkBackLeft() < 20) {
-      Serial.println("checkBackLeft() detected object");
+    else if (checkBackLeft() < 10) {
+      Serial.println("Can't continue checkBackLeft() detected object");
       return false;
     }
 
-    else if (checkBackRight() < 20) {
-      Serial.println("checkBackRight() detected object");
+    else if (checkBackRight() < 10) {
+      Serial.println("Can't continue checkBackRight() detected object");
       return false;
     }
 
@@ -158,11 +158,27 @@ bool carryOn(String dir) {
       return true;
     }
   } else if (dir == "left") {
-    return true;
-
+    //will want to stop when the front or back is clear or when the left side is blocked
+    if (checkBack > 10 || checkBackLeft > 10 || checkBackRight > 10) {
+      return false;
+    } else if (checkLeft < 10 || checkRight < 10) {
+      return false;
+    } else if (checkFwdRight > 10 || checkFwdLeft > 10 || checkFwd > 10) {
+      return false;
+    } else {
+      return true;
+    }
+    
   } else if (dir == "right") {
-    return true;
-
+    if (checkBack > 10 || checkBackLeft > 10 || checkBackRight > 10) {
+      return false;
+    } else if (checkLeft < 10 || checkRight < 10) {
+      return false;
+    } else if (checkFwdRight > 10 || checkFwdLeft > 10 || checkFwd > 10) {
+      return false;
+    } else {
+      return true;
+    }
   }
 }
 
