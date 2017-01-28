@@ -10,6 +10,10 @@
 #define BACK_M_ECHO 22
 #define BACK_R_TRIG 28
 #define BACK_R_ECHO 29
+#define LEFT_TRIG 50
+#define LEFT_ECHO 51
+#define RIGHT_TRIG 6
+#define RIGHT_ECHO 7
 #define FRONT_A_PWN 11
 #define FRONT_IN_1 48
 #define FRONT_IN_2 49
@@ -25,6 +29,10 @@
 
 void setup() {
   Serial.begin(9600);
+  pinMode(LEFT_TRIG, OUTPUT);
+  pinMode(LEFT_ECHO, INPUT);
+  pinMode(RIGHT_TRIG, OUTPUT);
+  pinMode(RIGHT_ECHO, INPUT);
   pinMode(FRONT_L_TRIG, OUTPUT);
   pinMode(FRONT_L_ECHO, INPUT);
   pinMode(FRONT_M_TRIG, OUTPUT);
@@ -330,6 +338,14 @@ int checkBackLeft() {
 
 int checkBackRight() {
   return checkDistance(BACK_R_TRIG, BACK_R_ECHO);
+}
+
+int checkLeft() {
+  return checkDistance(LEFT_TRIG, LEFT_ECHO);
+}
+
+int checkRight() {
+  return checkDistance(RIGHT_TRIG, RIGHT_ECHO);
 }
 
 
