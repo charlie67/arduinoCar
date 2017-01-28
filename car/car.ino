@@ -1,8 +1,6 @@
 #include "SoftwareSerial.h"
 SoftwareSerial BT(52, 53);
 
-bool canRun = false;
-
 #define FRONT_L_TRIG 32
 #define FRONT_L_ECHO 33
 #define FRONT_M_TRIG 34
@@ -30,6 +28,7 @@ bool canRun = false;
 
 void setup() {
   BT.begin(9600);
+  Serial.begin(9600);
   pinMode(FRONT_L_TRIG, OUTPUT);
   pinMode(FRONT_L_ECHO, INPUT);
   pinMode(FRONT_M_TRIG, OUTPUT);
@@ -57,25 +56,61 @@ void setup() {
 
 void loop() {
   BT.println("starting loop");
-  standardRun(255);
+  standardRun();
 }
 
-void standardRun(int speed) {
+void testSensors() {
+  Serial.print("back Middle ");
+  Serial.print(checkBack());
+  Serial.print('\n');
+
+  Serial.print("back Left ");
+  Serial.print(checkBackLeft());
+  Serial.print('\n');
+
+  Serial.print("back right ");
+  Serial.print(checkBackRight());
+  Serial.print('\n');
+
+  Serial.print("front Middle ");
+  Serial.print(checkFwd());
+  Serial.print('\n');
+
+  Serial.print("front left ");
+  Serial.print(checkFwdLeft());
+  Serial.print('\n');
+
+  Serial.print("front right ");
+  Serial.print(checkFwdRight());
+  Serial.print('\n');
+}
+
+void drectionTestLoop() {
+  forward(255);
+  delay(2000);
+  backward(255);
+  delay(2000);
+  turnLeft(255);
+  delay(2000);
+  turnRight(255);
+  delay(2000);
+}
+
+void standardRun() {
   String dir = decide();
   BT.println(dir);
-  while (carryOn(dir)) {
-    if (dir == "forward") {
-      forward(speed);
-    } else if (dir == "back") {
-      backward(speed);
-    } else if (dir == "left") {
-      turnLeft(speed);
-      delay(15);
-    } else if (dir == "right") {
-      turnRight(speed);
-      delay(15);
-    }
-    stopAll();
+  if (dir == "forward") {
+    BT.println("going forward");
+    forward(255);
+  } else if (dir == "back") {
+    BT.println("going back");
+    backward(255);
+  } else if (dir == "left") {
+    BT.println("going left");
+    turnLeft(255);
+  } else if (dir == "right") {
+    BT.println("going right");
+    turnRight(255);
   }
 }
 
@@ -120,6 +155,12 @@ bool carryOn(String dir) {
     else {
       return true;
     }
+  } else if (dir == "left") {
+    return true;
+
+  } else if (dir == "right") {
+    return true;
+
   }
 }
 
@@ -202,6 +243,7 @@ void forwardRight(int speed) {//moves right forwards
 }
 
 void backward(int speed) {
+  BT.println("back at speed ");
   backwardForBackLeft(speed);
   backwardForBackRight(speed);
   backwardForFrontLeft(speed);
@@ -237,6 +279,7 @@ void backwardForFrontRight(int speed) {
 }
 
 void forward(int speed) {
+  BT.println("forwards at speed ");
   forwardForBackLeft(speed);
   forwardForBackRight(speed);
   forwardForFrontLeft(speed);
