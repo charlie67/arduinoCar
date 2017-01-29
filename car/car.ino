@@ -27,6 +27,8 @@
 #define BACK_IN_3 45
 #define BACK_IN_4 44
 
+char dir[4];
+
 void setup() {
   Serial.begin(9600);
   pinMode(LEFT_TRIG, OUTPUT);
@@ -85,6 +87,14 @@ void testSensors() {
   Serial.print("front right ");
   Serial.print(checkFwdRight());
   Serial.print('\n');
+
+  Serial.print("Left side");
+  Serial.print(checkLeft());
+  Serial.print('\n');
+
+  Serial.print("Right side");
+  Serial.print(checkRight());
+  Serial.print('\n');
 }
 
 void drectionTestLoop() {
@@ -101,19 +111,22 @@ void drectionTestLoop() {
 void standardRun() {
   String dir = decide();
   Serial.println(dir);
-  if (dir == "forward") {
-    Serial.println("going forward");
-    forward(255);
-  } else if (dir == "back") {
-    Serial.println("going back");
-    backward(255);
-  } else if (dir == "left") {
-    Serial.println("going left");
-    turnLeft(255);
-  } else if (dir == "right") {
-    Serial.println("going right");
-    turnRight(255);
+  while (carryOn(dir)) {
+    if (dir == "forward") {
+      Serial.println("going forward");
+      forward(255);
+    } else if (dir == "back") {
+      Serial.println("going back");
+      backward(255);
+    } else if (dir == "left") {
+      Serial.println("going left");
+      turnLeft(255);
+    } else if (dir == "right") {
+      Serial.println("going right");
+      turnRight(255);
+    }
   }
+  stopAll();
 }
 
 bool carryOn(String dir) {
@@ -136,6 +149,7 @@ bool carryOn(String dir) {
     }
 
     else {
+      Serial.println("all clear");
       return true;
     }
   } else if (dir == "back") {
@@ -155,6 +169,7 @@ bool carryOn(String dir) {
     }
 
     else {
+      Serial.println("all clear");
       return true;
     }
   } else if (dir == "left") {
@@ -166,9 +181,10 @@ bool carryOn(String dir) {
     } else if (checkFwdRight > 10 || checkFwdLeft > 10 || checkFwd > 10) {
       return false;
     } else {
+      Serial.println("all clear");
       return true;
     }
-    
+
   } else if (dir == "right") {
     if (checkBack > 10 || checkBackLeft > 10 || checkBackRight > 10) {
       return false;
@@ -177,6 +193,7 @@ bool carryOn(String dir) {
     } else if (checkFwdRight > 10 || checkFwdLeft > 10 || checkFwd > 10) {
       return false;
     } else {
+      Serial.println("all clear");
       return true;
     }
   }
@@ -203,7 +220,7 @@ String decide() {
     int backLeft = checkBackLeft();
     int right = (frontRight + backLeft) / 2;
 
-    if (left > right) {
+    if (left > right && checkLeft > 10) {
       return "left";
     } else {
       return "right";
