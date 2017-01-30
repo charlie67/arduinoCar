@@ -27,7 +27,8 @@
 #define BACK_IN_3 45
 #define BACK_IN_4 44
 
-char dir[4];
+char previousDir;
+char previousDirBefore;
 
 void setup() {
   Serial.begin(9600);
@@ -110,18 +111,23 @@ void drectionTestLoop() {
 
 void standardRun() {
   String dir = decide();
+  previousDirBefore = previousDir;
   Serial.println(dir);
   while (carryOn(dir)) {
     if (dir == "forward") {
+      previousDir = 'f';
       Serial.println("going forward");
       forward(255);
     } else if (dir == "back") {
+      previousDir = 'b';
       Serial.println("going back");
       backward(255);
     } else if (dir == "left") {
+      previousDir = 'l';
       Serial.println("going left");
       turnLeft(255);
     } else if (dir == "right") {
+      previousDir = 'r';
       Serial.println("going right");
       turnRight(255);
     }
@@ -202,6 +208,19 @@ bool carryOn(String dir) {
 String decide() {
   int forward = checkFwd();
   int back = checkBack();
+
+  if ((previousDir == 'b' && previousDirBefore == 'f') || (previousDir == 'f' && previousDirBefore == 'b')) {
+    Serial.println("gone forwards and then backwards seeing if I can turn");
+    int left = checkLeft();
+    int right = checkRight();
+
+    if (left > right) {
+      return "left";
+    } else if (right > left) {
+      return "right";
+    }
+  }
+  
   if ((forward < 10 && back < 10) && (checkLeft() > 10 || checkRight() > 10)) {
     /*will have to turn
       decide which direction
